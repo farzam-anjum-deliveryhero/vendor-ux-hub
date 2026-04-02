@@ -1,0 +1,2858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vendor UX Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════════════════════════ */
+:root {
+  /* Brand */
+  --primary:        #4629FF;
+  --primary-dark:   #3218E0;
+  --primary-50:     #F0EEFF;
+  --primary-100:    #DDD8FF;
+  --primary-200:    #B8AEFF;
+  --primary-300:    #8E7FFF;
+
+  /* Neutrals */
+  --n0:   #FFFFFF;
+  --n50:  #F8F8FB;
+  --n100: #F1F1F5;
+  --n150: #E8E8EF;
+  --n200: #DCDCE6;
+  --n300: #C0C0CF;
+  --n400: #9696A8;
+  --n500: #6C6C80;
+  --n600: #4E4E60;
+  --n700: #35353F;
+  --n800: #21212A;
+  --n900: #121218;
+
+  /* Semantic */
+  --green:      #16A34A;
+  --green-bg:   #F0FDF4;
+  --green-border:#BBF7D0;
+  --amber:      #D97706;
+  --amber-bg:   #FFFBEB;
+  --amber-border:#FDE68A;
+  --red:        #DC2626;
+  --red-bg:     #FEF2F2;
+  --blue-bg:    #EFF6FF;
+  --blue:       #2563EB;
+
+  /* Radii */
+  --r4:   4px;
+  --r6:   6px;
+  --r8:   8px;
+  --r10:  10px;
+  --r12:  12px;
+  --r16:  16px;
+  --r999: 999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-primary: 0 0 0 3px rgba(70,41,255,0.12);
+
+  /* Layout */
+  --sidebar: 232px;
+  --topbar:  52px;
+  --content-max: 1200px;
+  --content-px: 40px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body {
+  font-family: 'Figtree', sans-serif;
+  background: var(--n0);
+  color: var(--n900);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; padding: 0; }
+ul { list-style: none; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--n200); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--n300); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   LAYOUT SYSTEM
+═══════════════════════════════════════════════════════════════════════ */
+#sidebar {
+  width: var(--sidebar);
+  min-height: 100vh;
+  background: var(--n0);
+  border-right: 1px solid var(--n150);
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#main-wrapper {
+  margin-left: var(--sidebar);
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--n0);
+}
+
+#topbar {
+  height: var(--topbar);
+  border-bottom: 1px solid var(--n150);
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--content-px);
+}
+
+/* Critical: centered content within the remaining viewport */
+#page-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 48px var(--content-px) 96px;
+}
+
+.content-center {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════════════════════════════════════ */
+.sidebar-header {
+  padding: 18px 16px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--n100);
+  flex-shrink: 0;
+}
+
+.logo-mark {
+  width: 28px; height: 28px;
+  background: var(--primary);
+  border-radius: var(--r6);
+  display: grid; place-items: center;
+  color: white;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--n900);
+  line-height: 1.3;
+  letter-spacing: -0.1px;
+}
+
+.logo-tag {
+  font-size: 10px;
+  color: var(--n400);
+  font-weight: 500;
+  margin-top: 0px;
+}
+
+.sidebar-body { padding: 12px 10px; flex: 1; }
+
+.nav-group { margin-bottom: 4px; }
+
+.nav-group-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--n400);
+  padding: 8px 8px 5px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 7px 9px;
+  border-radius: var(--r8);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--n500);
+  text-align: left;
+  transition: background 0.1s, color 0.1s;
+  position: relative;
+}
+
+.nav-item:hover {
+  background: var(--n100);
+  color: var(--n800);
+}
+
+.nav-item.active {
+  background: var(--primary-50);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-item.active .nav-icon-wrap svg { color: var(--primary); }
+
+.nav-icon-wrap {
+  width: 16px; height: 16px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+.nav-item.active .nav-icon-wrap { opacity: 1; }
+
+.nav-badge {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--primary);
+  color: white;
+  padding: 1px 6px;
+  border-radius: var(--r999);
+  line-height: 15px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TOPBAR
+═══════════════════════════════════════════════════════════════════════ */
+.topbar-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--n400);
+  flex-shrink: 0;
+}
+.breadcrumb .bc-sep { color: var(--n300); font-size: 11px; }
+.breadcrumb .bc-current { color: var(--n700); font-weight: 600; }
+
+.search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  background: var(--n100);
+  border: 1px solid transparent;
+  border-radius: var(--r8);
+  padding: 0 11px;
+  flex: 1;
+  max-width: 380px;
+  transition: all 0.15s;
+  cursor: text;
+}
+.search-wrap:focus-within {
+  background: var(--n0);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-primary);
+}
+.search-wrap input {
+  flex: 1; border: none; background: none; outline: none;
+  font-family: inherit; font-size: 12.5px; color: var(--n700);
+}
+.search-wrap input::placeholder { color: var(--n400); }
+.search-icon { color: var(--n400); display: flex; align-items: center; flex-shrink: 0; }
+.kbd-hint { display: flex; gap: 3px; margin-left: auto; flex-shrink: 0; }
+kbd {
+  display: inline-block; padding: 0 4px;
+  font-family: inherit; font-size: 10px; color: var(--n400);
+  background: var(--n0); border: 1px solid var(--n200); border-radius: 4px;
+  line-height: 16px;
+}
+
+.topbar-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 30px; padding: 0 13px;
+  border-radius: var(--r8);
+  font-size: 12.5px; font-weight: 600;
+  transition: all 0.12s;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); box-shadow: var(--shadow-sm); }
+.btn-ghost { border: 1px solid var(--n200); color: var(--n600); }
+.btn-ghost:hover { background: var(--n50); color: var(--n800); border-color: var(--n300); }
+.btn-lg {
+  height: 38px; padding: 0 18px;
+  border-radius: var(--r10);
+  font-size: 13.5px; font-weight: 700;
+}
+.btn-xl {
+  height: 44px; padding: 0 22px;
+  border-radius: var(--r10);
+  font-size: 14px; font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TYPOGRAPHY SCALE
+═══════════════════════════════════════════════════════════════════════ */
+.page-headline {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--n900);
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+}
+.page-sub {
+  font-size: 14px;
+  color: var(--n500);
+  margin-top: 5px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.section-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--n900);
+  letter-spacing: -0.1px;
+}
+.section-desc {
+  font-size: 12.5px;
+  color: var(--n500);
+  margin-top: 2px;
+}
+.section-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+.section-link {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.section-link:hover { text-decoration: underline; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SPACING & LAYOUT HELPERS
+═══════════════════════════════════════════════════════════════════════ */
+.page-section { margin-bottom: 44px; }   /* was 52px — tighter rhythm with smaller hero */
+.stack-sm { display: flex; flex-direction: column; gap: 8px; }
+.stack-md { display: flex; flex-direction: column; gap: 12px; }
+
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.grid-2-1 { display: grid; grid-template-columns: 1fr 360px; gap: 24px; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TAGS / CHIPS
+═══════════════════════════════════════════════════════════════════════ */
+.chip {
+  display: inline-flex; align-items: center; gap: 3px;
+  padding: 2px 8px;
+  border-radius: var(--r999);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 18px;
+  white-space: nowrap;
+}
+.chip-blue    { background: var(--primary-50); color: var(--primary); }
+.chip-green   { background: var(--green-bg); color: var(--green); }
+.chip-amber   { background: var(--amber-bg); color: var(--amber); }
+.chip-red     { background: var(--red-bg); color: var(--red); }
+.chip-gray    { background: var(--n100); color: var(--n500); }
+.chip-dark    { background: var(--n800); color: var(--n0); }
+.chip-outline { background: transparent; color: var(--n500); border: 1px solid var(--n200); }
+.chip-purple  { background: #F5F3FF; color: #6D28D9; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 5px; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   STANDARD CARD — the atomic unit
+═══════════════════════════════════════════════════════════════════════ */
+.card {
+  background: var(--n0);
+  border: 1px solid var(--n200);
+  border-radius: var(--r12);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  cursor: pointer;
+  overflow: hidden;
+}
+.card:hover {
+  border-color: var(--primary-200);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.card:hover .card-action-row { opacity: 1; }
+
+.card-icon {
+  width: 38px; height: 38px;
+  border-radius: var(--r8);
+  display: grid; place-items: center;
+  font-size: 19px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+.card-type-bar {
+  position: absolute; top: 0; left: 0; right: 0; height: 2.5px;
+  background: var(--primary);
+  border-radius: var(--r12) var(--r12) 0 0;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.card:hover .card-type-bar { opacity: 1; }
+
+/* Hub section cards — type bar always on */
+.card.hub-card .card-type-bar { opacity: 1; }
+
+/* Grid: equal heights via stretch */
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; align-items: stretch; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: stretch; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; align-items: stretch; }
+
+.card-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--n900);
+  line-height: 1.4;
+  margin-bottom: 5px;
+}
+.card-desc {
+  font-size: 12.5px;
+  color: var(--n500);
+  line-height: 1.55;
+  margin-bottom: 14px;
+  flex: 1;           /* pushes card-chips + action-row to bottom always */
+}
+/* Ensure cards in grids all stretch to equal height */
+.grid-4 .card,
+.grid-3 .card,
+.grid-2 .card { height: 100%; }
+.card-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+
+.card-action-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--n100);
+  opacity: 1;          /* was 0 — now always visible */
+  transition: none;
+  gap: 8px;
+}
+/* Remove the hover-only reveal — actions are always shown */
+.card:hover .card-action-row { opacity: 1; }
+
+/* Always-show variant — kept for explicit overrides */
+.card-action-row.always { opacity: 1; }
+
+.card-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  height: 26px; padding: 0 11px;
+  border-radius: var(--r999);
+  font-size: 11.5px; font-weight: 700;
+  background: var(--primary);
+  color: white;
+  transition: background 0.12s;
+  white-space: nowrap;
+}
+.card-btn:hover { background: var(--primary-dark); }
+
+.card-btn-ghost {
+  display: inline-flex; align-items: center; gap: 5px;
+  height: 26px; padding: 0 10px;
+  border-radius: var(--r999);
+  font-size: 11.5px; font-weight: 600;
+  color: var(--n500);
+  border: 1px solid var(--n200);
+  transition: all 0.12s;
+}
+.card-btn-ghost:hover { border-color: var(--n300); color: var(--n700); background: var(--n50); }
+
+.card-icon-btn {
+  width: 26px; height: 26px;
+  border-radius: var(--r6);
+  display: grid; place-items: center;
+  color: var(--n400);
+  transition: all 0.12s;
+}
+.card-icon-btn:hover { background: var(--n100); color: var(--n700); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ARTICLE CARD — Learning Hub
+═══════════════════════════════════════════════════════════════════════ */
+.article-card {
+  background: var(--n0);
+  border: 1px solid var(--n200);
+  border-radius: var(--r12);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.article-card:hover {
+  border-color: var(--primary-200);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.article-card:hover .card-action-row { opacity: 1; }
+
+.article-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+.article-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--n900);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+.article-summary {
+  font-size: 12.5px;
+  color: var(--n500);
+  line-height: 1.6;
+  margin-bottom: 14px;
+  flex: 1;
+}
+.article-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--n100);
+  gap: 12px;
+}
+.author-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.author-avatar {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--primary-50);
+  color: var(--primary);
+  font-size: 9px;
+  font-weight: 800;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.author-name { font-size: 11.5px; font-weight: 600; color: var(--n600); }
+.updated-label { font-size: 11px; color: var(--n400); white-space: nowrap; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   LIST ROW — compact content item
+═══════════════════════════════════════════════════════════════════════ */
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--r10);
+  border: 1px solid var(--n150);
+  background: var(--n0);
+  transition: all 0.12s;
+  cursor: pointer;
+}
+.list-item:hover {
+  border-color: var(--primary-200);
+  box-shadow: var(--shadow-sm);
+  background: var(--primary-50);
+}
+.list-item:hover .list-item-action { opacity: 1; }
+
+.list-icon {
+  width: 34px; height: 34px;
+  border-radius: var(--r8);
+  display: grid; place-items: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.list-content { flex: 1; min-width: 0; }
+.list-title { font-size: 13px; font-weight: 600; color: var(--n900); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.list-sub { font-size: 11.5px; color: var(--n500); margin-top: 1px; }
+.list-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.list-item-action {
+  opacity: 0;
+  transition: opacity 0.12s;
+  font-size: 11.5px; font-weight: 600;
+  color: var(--primary);
+  display: flex; align-items: center; gap: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   HERO — compact, ~35% reduced height vs original
+═══════════════════════════════════════════════════════════════════════ */
+.hero {
+  /* Gradient: slightly lighter, less intense */
+  background: linear-gradient(140deg, #4629FF 0%, #3218E0 55%, #2510C0 100%);
+  border-radius: var(--r16);
+  padding: 32px 44px;          /* was 48px 52px */
+  color: white;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 44px;         /* was 52px */
+}
+/* Decorative shapes — reduced opacity */
+.hero::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 260px; height: 260px; border-radius: 50%;
+  background: rgba(255,255,255,0.04);   /* was 0.05 */
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -40px; right: 160px;
+  width: 160px; height: 160px; border-radius: 50%;
+  background: rgba(255,255,255,0.02);   /* was 0.03 */
+}
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 10px;          /* was 14px */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px; height: 1.5px;
+  background: rgba(255,255,255,0.3);
+}
+.hero h1 {
+  font-size: 28px;              /* was 34px */
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.4px;
+  max-width: 560px;             /* was 520px */
+  margin-bottom: 10px;          /* was 14px */
+}
+.hero p {
+  font-size: 13.5px;            /* was 14.5px */
+  color: rgba(255,255,255,0.68);
+  max-width: 480px;             /* was 440px */
+  line-height: 1.6;
+  margin-bottom: 22px;          /* was 32px */
+}
+.hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn-solid {
+  display: inline-flex; align-items: center; gap: 7px;
+  height: 38px; padding: 0 20px;   /* was 42px / 22px */
+  background: white; color: var(--primary);
+  border-radius: var(--r10);
+  font-size: 13px; font-weight: 700;
+  transition: background 0.12s, transform 0.12s;
+}
+.hero-btn-solid:hover { background: var(--n50); transform: translateY(-1px); }
+.hero-btn-outline {
+  display: inline-flex; align-items: center; gap: 7px;
+  height: 38px; padding: 0 18px;   /* was 42px / 20px */
+  border: 1.5px solid rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.88);
+  border-radius: var(--r10);
+  font-size: 13px; font-weight: 600;
+  transition: all 0.12s;
+}
+.hero-btn-outline:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.38); }
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 20px;             /* was 32px */
+  padding-top: 18px;            /* was 28px */
+  border-top: 1px solid rgba(255,255,255,0.11);
+  flex-wrap: wrap;
+}
+.hero-stat-val { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; } /* was 24px */
+.hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.48); margin-top: 1px; font-weight: 500; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   AUDIENCE PILLS
+═══════════════════════════════════════════════════════════════════════ */
+.audience-rail { display: flex; gap: 8px; flex-wrap: wrap; }
+.audience-pill {
+  display: flex; align-items: center; gap: 7px;
+  padding: 7px 16px;
+  border-radius: var(--r999);
+  font-size: 12.5px; font-weight: 600;
+  border: 1.5px solid var(--n200);
+  color: var(--n500);
+  cursor: pointer;
+  transition: all 0.12s;
+  background: var(--n0);
+}
+.audience-pill:hover { border-color: var(--primary-200); color: var(--primary); background: var(--primary-50); }
+.audience-pill.active { background: var(--primary); color: white; border-color: var(--primary); }
+.audience-pill .pill-emoji { font-size: 14px; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SESSION / OFFICE HOURS CARD
+═══════════════════════════════════════════════════════════════════════ */
+.session-card {
+  border: 1px solid var(--n150);
+  border-radius: var(--r12);
+  padding: 18px 20px;
+  background: var(--n0);
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.session-card:hover { border-color: var(--primary-200); box-shadow: var(--shadow-sm); }
+.session-card.featured {
+  background: linear-gradient(135deg, var(--primary-50), #E8E4FF);
+  border-color: var(--primary-100);
+}
+
+.session-type {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--n400); margin-bottom: 4px;
+}
+.session-card.featured .session-type { color: var(--primary); opacity: 0.7; }
+.session-name { font-size: 14px; font-weight: 700; color: var(--n900); margin-bottom: 2px; }
+.session-card.featured .session-name { color: var(--primary-dark); }
+.session-time { font-size: 12px; color: var(--n500); margin-bottom: 12px; }
+.session-card.featured .session-time { color: var(--primary); }
+.session-host {
+  display: flex; align-items: center; gap: 8px;
+  padding-top: 11px; border-top: 1px solid var(--n150);
+}
+.session-card.featured .session-host { border-top-color: rgba(70,41,255,0.12); }
+.host-avatar {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--primary-100); color: var(--primary);
+  font-size: 9px; font-weight: 800;
+  display: grid; place-items: center; flex-shrink: 0;
+}
+.session-card.featured .host-avatar { background: rgba(70,41,255,0.15); }
+.host-name { font-size: 12px; font-weight: 600; color: var(--n600); flex: 1; }
+.session-card.featured .host-name { color: var(--primary-dark); }
+.join-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  height: 26px; padding: 0 12px;
+  border-radius: var(--r999);
+  font-size: 11.5px; font-weight: 700;
+  background: var(--primary); color: white;
+  transition: background 0.12s;
+}
+.join-btn:hover { background: var(--primary-dark); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   STAT CARD
+═══════════════════════════════════════════════════════════════════════ */
+.stat-card {
+  background: var(--n0);
+  border: 1px solid var(--n150);
+  border-radius: var(--r12);
+  padding: 20px;
+}
+.stat-val { font-size: 30px; font-weight: 800; color: var(--n900); letter-spacing: -1px; line-height: 1; margin-bottom: 4px; }
+.stat-label { font-size: 12px; color: var(--n500); font-weight: 500; }
+.stat-delta { font-size: 11.5px; font-weight: 700; color: var(--green); margin-top: 8px; display: flex; align-items: center; gap: 3px; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   STEP LIST
+═══════════════════════════════════════════════════════════════════════ */
+.step-list { display: flex; flex-direction: column; }
+.step-item {
+  display: flex; gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--n100);
+}
+.step-item:last-child { border-bottom: none; padding-bottom: 0; }
+.step-num {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--primary); color: white;
+  font-size: 11.5px; font-weight: 800;
+  display: grid; place-items: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.step-body {}
+.step-title { font-size: 13.5px; font-weight: 700; color: var(--n900); margin-bottom: 3px; }
+.step-desc { font-size: 12.5px; color: var(--n500); line-height: 1.55; }
+.step-cta {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--primary);
+}
+.step-cta:hover { text-decoration: underline; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TABLE
+═══════════════════════════════════════════════════════════════════════ */
+.table-wrap {
+  border: 1px solid var(--n150);
+  border-radius: var(--r12);
+  overflow: hidden;
+}
+table { width: 100%; border-collapse: collapse; }
+thead { background: var(--n50); }
+th {
+  text-align: left;
+  padding: 9px 16px;
+  font-size: 11px; font-weight: 700;
+  color: var(--n500); letter-spacing: 0.05em; text-transform: uppercase;
+  border-bottom: 1px solid var(--n150);
+}
+td {
+  padding: 12px 16px;
+  font-size: 13px; color: var(--n700);
+  border-bottom: 1px solid var(--n100);
+}
+tr:last-child td { border-bottom: none; }
+tbody tr { transition: background 0.1s; }
+tbody tr:hover td { background: var(--n50); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CALLOUT
+═══════════════════════════════════════════════════════════════════════ */
+.callout {
+  display: flex; gap: 12px;
+  padding: 14px 18px;
+  border-radius: var(--r10);
+  margin-bottom: 28px;
+}
+.callout.info { background: var(--primary-50); border: 1px solid var(--primary-100); }
+.callout.success { background: var(--green-bg); border: 1px solid var(--green-border); }
+.callout.warning { background: var(--amber-bg); border: 1px solid var(--amber-border); }
+.callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.callout-body { font-size: 13px; line-height: 1.55; }
+.callout-body strong { font-weight: 700; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FILTER BAR
+═══════════════════════════════════════════════════════════════════════ */
+.filter-bar { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 24px; }
+.filter-pill {
+  padding: 5px 13px;
+  border-radius: var(--r999);
+  font-size: 12.5px; font-weight: 500;
+  border: 1px solid var(--n200);
+  color: var(--n500);
+  cursor: pointer;
+  transition: all 0.12s;
+  background: var(--n0);
+}
+.filter-pill:hover { border-color: var(--primary-200); color: var(--primary); background: var(--primary-50); }
+.filter-pill.active {
+  background: var(--primary-50); color: var(--primary);
+  border-color: var(--primary-100); font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   INITIATIVE CARD
+═══════════════════════════════════════════════════════════════════════ */
+.initiative-card {
+  background: var(--n0);
+  border: 1px solid var(--n200);
+  border-radius: var(--r12);
+  padding: 20px;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.initiative-card:hover { border-color: var(--primary-200); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.init-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+.init-icon { width: 40px; height: 40px; border-radius: var(--r8); display: grid; place-items: center; font-size: 20px; flex-shrink: 0; }
+.init-title { font-size: 13.5px; font-weight: 700; color: var(--n900); margin-bottom: 5px; }
+.init-desc { font-size: 12.5px; color: var(--n500); line-height: 1.55; margin-bottom: 14px; }
+.progress-wrap { margin-top: 14px; }
+.progress-label {
+  display: flex; justify-content: space-between;
+  font-size: 11px; font-weight: 600; color: var(--n500); margin-bottom: 5px;
+}
+.progress-track { height: 4px; background: var(--n100); border-radius: 99px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--primary); border-radius: 99px; }
+.progress-fill.done { background: var(--green); }
+.init-footer {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--n100);
+}
+.init-owner { font-size: 11.5px; color: var(--n500); margin-left: auto; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SUPPORT CARD
+═══════════════════════════════════════════════════════════════════════ */
+.support-card {
+  background: var(--n0);
+  border: 1px solid var(--n150);
+  border-radius: var(--r12);
+  padding: 22px;
+  display: flex;
+  gap: 16px;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.support-card:hover { border-color: var(--primary-200); box-shadow: var(--shadow-md); }
+.support-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--r10);
+  background: var(--primary-50);
+  display: grid; place-items: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.support-title { font-size: 14px; font-weight: 700; color: var(--n900); margin-bottom: 4px; }
+.support-desc { font-size: 12.5px; color: var(--n500); line-height: 1.55; }
+.support-cta { display: flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12.5px; font-weight: 700; color: var(--primary); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DIVIDER
+═══════════════════════════════════════════════════════════════════════ */
+.divider { height: 1px; background: var(--n100); margin: 40px 0; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PAGE TRANSITIONS
+═══════════════════════════════════════════════════════════════════════ */
+.page { display: none; }
+.page.active { display: block; animation: pageFadeIn 0.18s ease both; }
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PAGE HEADER
+═══════════════════════════════════════════════════════════════════════ */
+.page-header {
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--n100);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CONTACT MINI CARD
+═══════════════════════════════════════════════════════════════════════ */
+.contact-card {
+  background: var(--n0);
+  border: 1px solid var(--n150);
+  border-radius: var(--r12);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.contact-card:hover { border-color: var(--primary-200); box-shadow: var(--shadow-md); }
+.contact-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--primary-50); color: var(--primary);
+  font-size: 15px; font-weight: 800;
+  display: grid; place-items: center;
+  margin-bottom: 10px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MICRO UTILS
+═══════════════════════════════════════════════════════════════════════ */
+.text-xs  { font-size: 11px; }
+.text-sm  { font-size: 12.5px; }
+.text-base { font-size: 13.5px; }
+.fw-500 { font-weight: 500; }
+.fw-600 { font-weight: 600; }
+.fw-700 { font-weight: 700; }
+.color-muted { color: var(--n500); }
+.color-primary { color: var(--primary); }
+.mt-4  { margin-top: 4px; }
+.mt-8  { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mb-8  { margin-bottom: 8px; }
+.mb-12 { margin-bottom: 12px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-32 { margin-bottom: 32px; }
+.flex-center { display: flex; align-items: center; }
+.gap-6 { gap: 6px; }
+.gap-8 { gap: 8px; }
+.gap-12 { gap: 12px; }
+
+/* ─── inline icon svg ────── */
+.ico { display: inline-flex; align-items: center; justify-content: center; }
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SIDEBAR
+══════════════════════════════════════════════════════════════════════ -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo-mark">V</div>
+    <div>
+      <div class="logo-text">Vendor UX Hub</div>
+      <div class="logo-tag">Design · Product · Internal</div>
+    </div>
+  </div>
+
+  <div class="sidebar-body">
+
+    <div class="nav-group">
+      <div class="nav-group-label">Main</div>
+      <button class="nav-item active" data-page="home">
+        <span class="nav-icon-wrap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 6.5L8 2l6 4.5V13a1 1 0 01-1 1H3a1 1 0 01-1-1V6.5z"/></svg>
+        </span>
+        Home
+      </button>
+      <button class="nav-item" data-page="ways">
+        <span class="nav-icon-wrap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5"/></svg>
+        </span>
+        Ways of Working
+      </button>
+      <button class="nav-item" data-page="learning">
+        <span class="nav-icon-wrap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 5l6-3 6 3-6 3-6-3z"/><path d="M2 8l6 3 6-3M2 11l6 3 6-3"/></svg>
+        </span>
+        Learning Hub
+        <span class="nav-badge">12</span>
+      </button>
+      <button class="nav-item" data-page="resources">
+        <span class="nav-icon-wrap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
+        </span>
+        Resources
+      </button>
+      <button class="nav-item" data-page="assets">
+        <span class="nav-icon-wrap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5.5" cy="5.5" r="2.5"/><path d="M2 13l3.5-4 2.5 3 2-2.5L14 13H2z"/></svg>
+        </span>
+        Design Assets
+      </button>
+      <button class="nav-item" data-page="research">
+        <span class="nav-icon-wrap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="4"/><path d="M10 10l3 3"/></svg>
+        </span>
+        Research
+      </button>
+      <button class="nav-item" data-page="initiatives">
+        <span class="nav-icon-wrap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13l3-5 2.5 2L11 5l2 8"/></svg>
+        </span>
+        Initiatives
+      </button>
+      <button class="nav-item" data-page="support">
+        <span class="nav-icon-wrap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 10a2 2 0 01-2 2H5l-3 3V4a2 2 0 012-2h8a2 2 0 012 2v6z"/></svg>
+        </span>
+        Support
+      </button>
+    </div>
+
+    <div class="nav-group" style="margin-top: 8px;">
+      <div class="nav-group-label">Quick links</div>
+      <button class="nav-item" data-page="learning">
+        <span class="nav-icon-wrap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2a6 6 0 106 6"/><path d="M11 2h3v3"/></svg>
+        </span>
+        AI Workflows
+      </button>
+      <button class="nav-item" data-page="assets">
+        <span class="nav-icon-wrap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2C4.7 2 2 4.7 2 8s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z"/><path d="M8 5v6M5 8h6"/></svg>
+        </span>
+        Figma Library
+      </button>
+      <button class="nav-item" data-page="support">
+        <span class="nav-icon-wrap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M2 6h12"/></svg>
+        </span>
+        Office Hours
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     MAIN WRAPPER
+══════════════════════════════════════════════════════════════════════ -->
+<div id="main-wrapper">
+
+  <!-- TOPBAR -->
+  <header id="topbar">
+    <div class="topbar-inner">
+      <div class="breadcrumb" id="breadcrumb">
+        <span>Vendor UX Hub</span>
+        <span class="bc-sep">›</span>
+        <span class="bc-current">Home</span>
+      </div>
+
+      <div class="search-wrap" style="margin-left: 20px;">
+        <span class="search-icon">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5l3 3"/>
+          </svg>
+        </span>
+        <input type="text" placeholder="Search articles, assets, playbooks…" id="search-input">
+        <span class="kbd-hint"><kbd>⌘</kbd><kbd>K</kbd></span>
+      </div>
+
+      <div class="topbar-right">
+        <button class="btn btn-ghost">📣 What's New</button>
+        <button class="btn btn-primary" data-page="support">Submit a Request</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE SCROLL AREA -->
+  <div id="page-scroll">
+    <div class="content-center">
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE: HOME
+══════════════════════════════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- 1. HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Vendor UX Hub · Internal Platform</div>
+    <h1>One place for everything Vendor UX</h1>
+    <p>Consolidated knowledge, reusable assets, and living playbooks — accessible to Design, Product, and beyond. No more digging through Slack.</p>
+    <div class="hero-ctas">
+      <button class="hero-btn-solid" data-page="learning">🎓 Start Learning</button>
+      <button class="hero-btn-outline" data-page="resources">Browse Resources →</button>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-val">48</div>
+        <div class="hero-stat-label">Articles &amp; Guides</div>
+      </div>
+      <div>
+        <div class="hero-stat-val">12</div>
+        <div class="hero-stat-label">Active Initiatives</div>
+      </div>
+      <div>
+        <div class="hero-stat-val">6</div>
+        <div class="hero-stat-label">Figma Libraries</div>
+      </div>
+      <div>
+        <div class="hero-stat-val">26</div>
+        <div class="hero-stat-label">Markets covered</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. BROWSE BY AUDIENCE -->
+  <div class="page-section">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Browse by audience</div>
+        <div class="section-desc">Filter the Hub to what's most relevant to you</div>
+      </div>
+    </div>
+    <div class="audience-rail">
+      <button class="audience-pill active"><span class="pill-emoji">✦</span> All</button>
+      <button class="audience-pill"><span class="pill-emoji">👩‍💻</span> Designer</button>
+      <button class="audience-pill"><span class="pill-emoji">📋</span> Product Manager</button>
+      <button class="audience-pill"><span class="pill-emoji">🌱</span> New Joiner</button>
+      <button class="audience-pill"><span class="pill-emoji">🔬</span> Researcher</button>
+    </div>
+  </div>
+
+  <!-- 3. EXPLORE THE HUB -->
+  <div class="page-section">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Explore the Hub</div>
+        <div class="section-desc">Eight sections, everything connected</div>
+      </div>
+    </div>
+    <div class="grid-4">
+
+      <div class="card hub-card" data-page="ways">
+        <div class="card-type-bar"></div>
+        <div class="card-icon" style="background:#F0EEFF;">⚙️</div>
+        <div class="card-title">Ways of Working</div>
+        <div class="card-desc">Rituals, process, team agreements, and Slack channels</div>
+        <div class="card-chips">
+          <span class="chip chip-gray">Process</span>
+          <span class="chip chip-gray">Rituals</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Explore</button>
+          <button class="card-icon-btn" title="Bookmark">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="card hub-card" data-page="learning">
+        <div class="card-type-bar"></div>
+        <div class="card-icon" style="background:#ECFDF5;">🎓</div>
+        <div class="card-title">Learning Hub</div>
+        <div class="card-desc">Guides, playbooks, AI workflows, and recorded sessions</div>
+        <div class="card-chips">
+          <span class="chip chip-green">12 new</span>
+          <span class="chip chip-gray">Guides</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Browse Guides</button>
+          <button class="card-icon-btn" title="Bookmark">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="card hub-card" data-page="resources">
+        <div class="card-type-bar"></div>
+        <div class="card-icon" style="background:#FFF7ED;">📦</div>
+        <div class="card-title">Resources</div>
+        <div class="card-desc">Templates, toolkits, and reference documentation</div>
+        <div class="card-chips">
+          <span class="chip chip-gray">Templates</span>
+          <span class="chip chip-gray">Tools</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Open Resources</button>
+          <button class="card-icon-btn" title="Bookmark">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="card hub-card" data-page="assets">
+        <div class="card-type-bar"></div>
+        <div class="card-icon" style="background:#F5F3FF;">🎨</div>
+        <div class="card-title">Design Assets</div>
+        <div class="card-desc">Figma libraries, icon sets, and design system docs</div>
+        <div class="card-chips">
+          <span class="chip chip-purple">Figma</span>
+          <span class="chip chip-gray">6 libraries</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Open in Figma</button>
+          <button class="card-icon-btn" title="Bookmark">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="card hub-card" data-page="research">
+        <div class="card-type-bar"></div>
+        <div class="card-icon" style="background:#EFF6FF;">🔬</div>
+        <div class="card-title">Research</div>
+        <div class="card-desc">Insights, usability studies, and user data analytics</div>
+        <div class="card-chips">
+          <span class="chip chip-blue">24 studies</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">View Insights</button>
+          <button class="card-icon-btn" title="Bookmark">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="card hub-card" data-page="initiatives">
+        <div class="card-type-bar"></div>
+        <div class="card-icon" style="background:#FFFBEB;">🚀</div>
+        <div class="card-title">Initiatives</div>
+        <div class="card-desc">Active projects, roadmap updates, and cross-team work</div>
+        <div class="card-chips">
+          <span class="chip chip-amber">4 active</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">View All</button>
+          <button class="card-icon-btn" title="Bookmark">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="card hub-card" data-page="support">
+        <div class="card-type-bar"></div>
+        <div class="card-icon" style="background:#FFF1F2;">💬</div>
+        <div class="card-title">Support</div>
+        <div class="card-desc">Office hours, bug reports, FAQ, and team contacts</div>
+        <div class="card-chips">
+          <span class="chip chip-gray">Thu 14:00</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Get Help</button>
+          <button class="card-icon-btn" title="Bookmark">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="card hub-card" data-page="learning" style="background: var(--primary-50); border-color: var(--primary-100);">
+        <div class="card-type-bar" style="opacity:1; background: var(--primary);"></div>
+        <div class="card-icon" style="background: rgba(70,41,255,0.12);">🤖</div>
+        <div class="card-title" style="color:var(--primary);">AI Workflows</div>
+        <div class="card-desc" style="color: var(--primary-dark); opacity: 0.65;">Claude prompts, AI tools, and automation guides</div>
+        <div class="card-chips">
+          <span class="chip chip-blue">Claude</span>
+          <span class="chip chip-blue">Figma AI</span>
+        </div>
+        <div class="card-action-row" style="border-top-color: var(--primary-100);">
+          <button class="card-btn">Start Learning</button>
+          <button class="card-icon-btn" title="Copy link">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4H4a2 2 0 000 4h2M10 4h2a2 2 0 010 4h-2M5 8h6"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 4. MOST USED RESOURCES -->
+  <div class="page-section">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Most used resources</div>
+        <div class="section-desc">The things the team reaches for every week</div>
+      </div>
+      <span class="section-link" data-page="resources">View all →</span>
+    </div>
+    <div class="stack-sm">
+      <div class="list-item">
+        <div class="list-icon" style="background:#F5F3FF;">🎨</div>
+        <div class="list-content">
+          <div class="list-title">Pando Design System — Figma Library</div>
+          <div class="list-sub">Core component library · v3.2 · 200+ components</div>
+        </div>
+        <div class="list-right">
+          <span class="chip chip-purple">Figma</span>
+          <div class="list-item-action">Open in Figma →</div>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="list-icon" style="background:#F0EEFF;">🤖</div>
+        <div class="list-content">
+          <div class="list-title">Claude Prompt Library — 30+ UX Prompts</div>
+          <div class="list-sub">Research synthesis, copy writing, documentation</div>
+        </div>
+        <div class="list-right">
+          <span class="chip chip-blue">AI</span>
+          <div class="list-item-action">Use Template →</div>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="list-icon" style="background:#ECFDF5;">📋</div>
+        <div class="list-content">
+          <div class="list-title">Design Brief Template</div>
+          <div class="list-sub">Problem framing, success metrics, and stakeholder sign-off</div>
+        </div>
+        <div class="list-right">
+          <span class="chip chip-gray">Template</span>
+          <div class="list-item-action">Use Template →</div>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="list-icon" style="background:#FFF7ED;">🗺️</div>
+        <div class="list-content">
+          <div class="list-title">Vendor Journey Map — Master 2025</div>
+          <div class="list-sub">End-to-end journey across 26 markets and 8 touchpoints</div>
+        </div>
+        <div class="list-right">
+          <span class="chip chip-gray">Reference</span>
+          <div class="list-item-action">Open →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. RECENTLY ADDED + UPCOMING SESSIONS (2-col) -->
+  <div class="grid-2-1" style="margin-bottom:52px;">
+
+    <!-- Recently added -->
+    <div>
+      <div class="section-head">
+        <div>
+          <div class="section-label">Recently added</div>
+          <div class="section-desc">New content from the last 2 weeks</div>
+        </div>
+        <span class="section-link">See all →</span>
+      </div>
+      <div class="stack-sm">
+        <div class="list-item">
+          <div class="list-icon" style="background:#F0EEFF;">📝</div>
+          <div class="list-content">
+            <div class="list-title">Vendor Onboarding — UX Playbook v2</div>
+            <div class="list-sub">Redesigned flow for 26 markets</div>
+          </div>
+          <div class="list-right">
+            <span class="chip chip-blue">Playbook</span>
+            <span class="text-xs color-muted">2d ago</span>
+            <div class="list-item-action">View Guide →</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon" style="background:#F0FDF4;">🤖</div>
+          <div class="list-content">
+            <div class="list-title">Using Claude for UX Research Synthesis</div>
+            <div class="list-sub">AI prompts and workflows</div>
+          </div>
+          <div class="list-right">
+            <span class="chip chip-green">AI</span>
+            <span class="text-xs color-muted">4d ago</span>
+            <div class="list-item-action">Read →</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon" style="background:#FFFBEB;">📊</div>
+          <div class="list-content">
+            <div class="list-title">Vendor Rewards — A/B Test Results Q1</div>
+            <div class="list-sub">Eppo results across 50k+ partners</div>
+          </div>
+          <div class="list-right">
+            <span class="chip chip-amber">Research</span>
+            <span class="text-xs color-muted">1w ago</span>
+            <div class="list-item-action">View →</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon" style="background:#F5F3FF;">🎨</div>
+          <div class="list-content">
+            <div class="list-title">Pando Component Library — April Update</div>
+            <div class="list-sub">New navigation and form components</div>
+          </div>
+          <div class="list-right">
+            <span class="chip chip-purple">Assets</span>
+            <span class="text-xs color-muted">1w ago</span>
+            <div class="list-item-action">Open →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upcoming sessions -->
+    <div>
+      <div class="section-head">
+        <div>
+          <div class="section-label">Upcoming sessions</div>
+          <div class="section-desc">Open to the whole team</div>
+        </div>
+      </div>
+      <div class="stack-md">
+        <div class="session-card featured">
+          <div class="session-type">Next up · Thursday</div>
+          <div class="session-name">Design Office Hours</div>
+          <div class="session-time">Thu · 14:00–15:00 CET · Open agenda</div>
+          <div class="session-host">
+            <div class="host-avatar">AM</div>
+            <div class="host-name">Alex Morgan · Design Manager</div>
+            <button class="join-btn">Join →</button>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-type">Tuesday</div>
+          <div class="session-name">Design Critique</div>
+          <div class="session-time">Tue · 15:00–16:00 CET · Vendor Rewards MVP</div>
+          <div class="session-host">
+            <div class="host-avatar" style="background:var(--green-bg); color:var(--green);">JL</div>
+            <div class="host-name">Jordan Lee · Staff Designer</div>
+            <button class="join-btn">Join →</button>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-type">Wednesday</div>
+          <div class="session-name">Sprint Planning</div>
+          <div class="session-time">Wed · 10:00–11:00 CET · Q2 priorities</div>
+          <div class="session-host">
+            <div class="host-avatar" style="background:var(--amber-bg); color:var(--amber);">TK</div>
+            <div class="host-name">Taylor Kim · Product</div>
+            <button class="join-btn">Join →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /page-home -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE: WAYS OF WORKING
+══════════════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-ways">
+  <div class="page-header">
+    <div class="page-headline">Ways of Working</div>
+    <div class="page-sub">Team rituals, process norms, agreements, and operating principles</div>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-icon">💡</div>
+    <div class="callout-body">
+      <strong>Last reviewed March 2025.</strong> These agreements were co-created with the team. Something outdated? Post in <strong>#vendor-design</strong>.
+    </div>
+  </div>
+
+  <div class="grid-2-1" style="gap:24px; margin-bottom:52px;">
+    <div>
+      <div class="section-head mb-16">
+        <div>
+          <div class="section-label">Team rituals</div>
+          <div class="section-desc">Recurring touchpoints that keep the team aligned</div>
+        </div>
+      </div>
+      <div class="stack-sm">
+        <div class="list-item">
+          <div class="list-icon" style="background:var(--primary-50);">📅</div>
+          <div class="list-content">
+            <div class="list-title">Weekly Design Sync</div>
+            <div class="list-sub">Mon 10:00–10:30 CET · Team + Jordan Lee</div>
+          </div>
+          <span class="chip chip-blue">Weekly</span>
+        </div>
+        <div class="list-item">
+          <div class="list-icon" style="background:var(--green-bg);">✍️</div>
+          <div class="list-content">
+            <div class="list-title">Design Critique</div>
+            <div class="list-sub">Tue 15:00–16:00 CET · Rotating presenter</div>
+          </div>
+          <span class="chip chip-green">Weekly</span>
+        </div>
+        <div class="list-item">
+          <div class="list-icon" style="background:var(--amber-bg);">💬</div>
+          <div class="list-content">
+            <div class="list-title">Office Hours</div>
+            <div class="list-sub">Thu 14:00–15:00 CET · Open to all</div>
+          </div>
+          <span class="chip chip-amber">Open</span>
+        </div>
+        <div class="list-item">
+          <div class="list-icon" style="background:var(--n100);">🎯</div>
+          <div class="list-content">
+            <div class="list-title">Sprint Planning</div>
+            <div class="list-sub">Bi-weekly Wed · Design + Product + Eng</div>
+          </div>
+          <span class="chip chip-gray">Bi-weekly</span>
+        </div>
+        <div class="list-item">
+          <div class="list-icon" style="background:var(--purple-bg, #F5F3FF);">🔁</div>
+          <div class="list-content">
+            <div class="list-title">Retrospective</div>
+            <div class="list-sub">End of sprint · Team health + process</div>
+          </div>
+          <span class="chip chip-purple">Bi-weekly</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-head mb-16">
+        <div>
+          <div class="section-label">Team agreements</div>
+          <div class="section-desc">How we work together</div>
+        </div>
+      </div>
+      <div class="stack-md">
+        <div class="card" style="cursor:default;">
+          <div class="card-title">🤝 Communication norms</div>
+          <div class="card-desc" style="margin-bottom:0;">Async-first. Respond to Slack within 24h on workdays. Use threads. Flag blockers in daily standup.</div>
+        </div>
+        <div class="card" style="cursor:default;">
+          <div class="card-title">📐 Design quality bar</div>
+          <div class="card-desc" style="margin-bottom:0;">Always use Pando components. Document decisions in Figma comments before grooming.</div>
+        </div>
+        <div class="card" style="cursor:default;">
+          <div class="card-title">🔁 Feedback culture</div>
+          <div class="card-desc" style="margin-bottom:0;">Feedback is about the work, not the person. Use "I noticed…" and "What if…" framing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">Design process</div>
+        <div class="section-desc">Four stages, from problem to handoff</div>
+      </div>
+    </div>
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Discovery &amp; Problem framing</div>
+          <div class="step-desc">Define the problem with Product. Use the Problem Statement template in Figma before touching UI.</div>
+          <a class="step-cta">→ Open template</a>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Research &amp; Insights</div>
+          <div class="step-desc">Check existing research first. Log new sessions in the Research Hub before recruiting participants.</div>
+          <a class="step-cta" data-page="research">→ Research Hub</a>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Design &amp; Iterate</div>
+          <div class="step-desc">Use Pando component library. Share Figma link in Slack after each meaningful iteration for async feedback.</div>
+          <a class="step-cta" data-page="assets">→ Figma Library</a>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">Review &amp; Handoff</div>
+          <div class="step-desc">Run a critique session. Leave Figma comments for open decisions. Complete design spec before grooming.</div>
+          <a class="step-cta">→ Handoff checklist</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">Slack channels</div>
+        <div class="section-desc">Where to go for what</div>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Channel</th><th>Purpose</th><th>Who should join</th></tr></thead>
+        <tbody>
+          <tr><td><span class="fw-700">#vendor-design</span></td><td>Main design channel — announcements, feedback, questions</td><td>All designers</td></tr>
+          <tr><td><span class="fw-700">#vendor-product</span></td><td>Product decisions, backlog, prioritization</td><td>Design + PM</td></tr>
+          <tr><td><span class="fw-700">#ux-craft</span></td><td>UX practice and cross-team sharing</td><td>All UX</td></tr>
+          <tr><td><span class="fw-700">#ai-experiments</span></td><td>Claude prompts, AI tooling, experiments</td><td>Anyone curious</td></tr>
+          <tr><td><span class="fw-700">#design-system-updates</span></td><td>Pando releases and component changes</td><td>All designers</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div><!-- /page-ways -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE: LEARNING HUB
+══════════════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-learning">
+  <div class="page-header">
+    <div class="page-headline">Learning Hub</div>
+    <div class="page-sub">Guides, playbooks, AI workflows, and recorded sessions — structured like an internal university</div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-pill active">All (48)</button>
+    <button class="filter-pill">🌱 Getting Started</button>
+    <button class="filter-pill">🤖 AI Workflows</button>
+    <button class="filter-pill">🎨 Design Practice</button>
+    <button class="filter-pill">📖 Playbooks</button>
+    <button class="filter-pill">🎥 Sessions</button>
+    <button class="filter-pill">🛠️ Tool Setup</button>
+  </div>
+
+  <!-- Getting Started -->
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">🌱 Getting started</div>
+        <div class="section-desc">Everything you need in your first two weeks</div>
+      </div>
+      <span class="section-link">See all →</span>
+    </div>
+    <div class="grid-2">
+
+      <div class="article-card">
+        <div class="article-meta-top">
+          <div class="chips">
+            <span class="chip chip-green">Guide</span>
+            <span class="chip chip-green">Beginner</span>
+          </div>
+          <button class="card-icon-btn" title="Bookmark" style="opacity:0.5; flex-shrink:0;">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+          </button>
+        </div>
+        <div class="article-title">Your First Week on Vendor UX — Orientation Guide</div>
+        <div class="article-summary">Figma access, Slack channels, key team norms, and your first design review checklist. Complete this before anything else.</div>
+        <div class="chips mb-12">
+          <span class="chip chip-gray">5 min read</span>
+          <span class="chip chip-gray">Updated Mar 28</span>
+        </div>
+        <div class="article-footer">
+          <div class="author-row">
+            <div class="author-avatar">AM</div>
+            <div class="author-name">Alex Morgan</div>
+          </div>
+          <button class="card-btn">Start Learning</button>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-meta-top">
+          <div class="chips">
+            <span class="chip chip-green">Guide</span>
+            <span class="chip chip-green">Beginner</span>
+          </div>
+          <button class="card-icon-btn" title="Bookmark" style="opacity:0.5; flex-shrink:0;">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+          </button>
+        </div>
+        <div class="article-title">Understanding the Vendor Ecosystem at Delivery Hero</div>
+        <div class="article-summary">The mental model you need before designing for VSO. How vendors, riders, and customers interact across 26 markets.</div>
+        <div class="chips mb-12">
+          <span class="chip chip-gray">8 min read</span>
+          <span class="chip chip-gray">Updated Feb 12</span>
+        </div>
+        <div class="article-footer">
+          <div class="author-row">
+            <div class="author-avatar" style="background:var(--green-bg); color:var(--green);">JL</div>
+            <div class="author-name">Jordan Lee</div>
+          </div>
+          <button class="card-btn">Start Learning</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Tool Setup -->
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">🛠️ Tool setup</div>
+        <div class="section-desc">Get your workspace configured correctly from day one</div>
+      </div>
+    </div>
+    <div class="grid-3">
+
+      <div class="article-card">
+        <div class="article-meta-top">
+          <div class="chips">
+            <span class="chip chip-purple">Tool Setup</span>
+            <span class="chip chip-green">Beginner</span>
+          </div>
+        </div>
+        <div class="article-title">Figma Setup — Libraries, Teams &amp; Shortcuts</div>
+        <div class="article-summary">Connect to the Pando library, enable auto-layout, and configure your workspace for fast delivery.</div>
+        <div class="chips mb-12">
+          <span class="chip chip-gray">3 min read</span>
+          <span class="chip chip-gray">Updated Jan 10</span>
+        </div>
+        <div class="article-footer">
+          <div class="author-row">
+            <div class="author-avatar" style="background:var(--amber-bg); color:var(--amber);">TK</div>
+            <div class="author-name">Taylor Kim</div>
+          </div>
+          <button class="card-btn">View Guide</button>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-meta-top">
+          <div class="chips">
+            <span class="chip chip-blue">AI</span>
+            <span class="chip chip-green">Beginner</span>
+          </div>
+        </div>
+        <div class="article-title">Claude Setup — Access Request &amp; First Use</div>
+        <div class="article-summary">How to request access via IT, and your first 3 prompts to get up and running with AI-assisted UX work.</div>
+        <div class="chips mb-12">
+          <span class="chip chip-gray">6 min read</span>
+          <span class="chip chip-gray">Updated Apr 1</span>
+        </div>
+        <div class="article-footer">
+          <div class="author-row">
+            <div class="author-avatar" style="background:var(--primary-50); color:var(--primary);">SR</div>
+            <div class="author-name">Sam Rivera</div>
+          </div>
+          <button class="card-btn">View Guide</button>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-meta-top">
+          <div class="chips">
+            <span class="chip chip-gray">Tool Setup</span>
+            <span class="chip chip-green">Beginner</span>
+          </div>
+        </div>
+        <div class="article-title">Eppo A/B Testing — Designer's Quickstart</div>
+        <div class="article-summary">How to read experiment results, understand statistical significance, and design for variant states.</div>
+        <div class="chips mb-12">
+          <span class="chip chip-gray">4 min read</span>
+          <span class="chip chip-gray">Updated Mar 5</span>
+        </div>
+        <div class="article-footer">
+          <div class="author-row">
+            <div class="author-avatar" style="background:var(--green-bg); color:var(--green);">JL</div>
+            <div class="author-name">Jordan Lee</div>
+          </div>
+          <button class="card-btn">View Guide</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AI Workflows -->
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">🤖 AI workflows</div>
+        <div class="section-desc">Practical guides for integrating AI into your day-to-day design work</div>
+      </div>
+      <span class="section-link">See all →</span>
+    </div>
+    <div class="grid-2">
+
+      <div class="article-card" style="border-color:var(--primary-200); background:var(--primary-50);">
+        <div class="article-meta-top">
+          <div class="chips">
+            <span class="chip chip-blue">AI</span>
+            <span class="chip chip-amber">Intermediate</span>
+          </div>
+          <button class="card-icon-btn" title="Bookmark" style="opacity:0.5; flex-shrink:0;">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+          </button>
+        </div>
+        <div class="article-title">Using Claude for UX Research Synthesis</div>
+        <div class="article-summary">Structured prompts for extracting themes, generating insight statements, and writing HMW questions from raw interview transcripts.</div>
+        <div class="chips mb-12">
+          <span class="chip chip-gray">8 min read</span>
+          <span class="chip chip-gray">Updated Apr 1</span>
+        </div>
+        <div class="article-footer">
+          <div class="author-row">
+            <div class="author-avatar">SR</div>
+            <div class="author-name">Sam Rivera</div>
+          </div>
+          <button class="card-btn">Start Learning</button>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-meta-top">
+          <div class="chips">
+            <span class="chip chip-blue">AI</span>
+            <span class="chip chip-green">Beginner</span>
+          </div>
+        </div>
+        <div class="article-title">Writing UX Copy with AI — Patterns &amp; Anti-patterns</div>
+        <div class="article-summary">Prompt Claude to write microcopy, empty states, error messages, and onboarding content that matches Delivery Hero's voice.</div>
+        <div class="chips mb-12">
+          <span class="chip chip-gray">6 min read</span>
+          <span class="chip chip-gray">Updated Mar 20</span>
+        </div>
+        <div class="article-footer">
+          <div class="author-row">
+            <div class="author-avatar" style="background:var(--amber-bg); color:var(--amber);">CC</div>
+            <div class="author-name">Casey Chen</div>
+          </div>
+          <button class="card-btn">Start Learning</button>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-meta-top">
+          <div class="chips">
+            <span class="chip chip-blue">AI</span>
+            <span class="chip chip-amber">Intermediate</span>
+          </div>
+        </div>
+        <div class="article-title">AI-Assisted Design Documentation — Specs &amp; Decision Logs</div>
+        <div class="article-summary">Use Claude to draft Figma annotations, rationale documents, and changelog entries in half the time.</div>
+        <div class="chips mb-12">
+          <span class="chip chip-gray">10 min read</span>
+          <span class="chip chip-gray">Updated Mar 31</span>
+        </div>
+        <div class="article-footer">
+          <div class="author-row">
+            <div class="author-avatar">SR</div>
+            <div class="author-name">Sam Rivera</div>
+          </div>
+          <button class="card-btn">Start Learning</button>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-meta-top">
+          <div class="chips">
+            <span class="chip chip-blue">AI</span>
+            <span class="chip chip-red">Advanced</span>
+          </div>
+        </div>
+        <div class="article-title">Building an AI-Augmented UX Workflow — End to End</div>
+        <div class="article-summary">From research planning to handoff — how to embed Claude at every stage without losing design craft or team trust.</div>
+        <div class="chips mb-12">
+          <span class="chip chip-gray">15 min read</span>
+          <span class="chip chip-gray">Updated Mar 10</span>
+        </div>
+        <div class="article-footer">
+          <div class="author-row">
+            <div class="author-avatar" style="background:var(--green-bg); color:var(--green);">JL</div>
+            <div class="author-name">Jordan Lee</div>
+          </div>
+          <button class="card-btn">Start Learning</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Playbooks -->
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">📖 Playbooks</div>
+        <div class="section-desc">Comprehensive, step-by-step guides for recurring design challenges</div>
+      </div>
+    </div>
+    <div class="grid-3">
+
+      <div class="article-card">
+        <div class="article-meta-top">
+          <div class="chips">
+            <span class="chip chip-blue">Playbook</span>
+            <span class="chip chip-amber">Intermediate</span>
+          </div>
+        </div>
+        <div class="article-title">Vendor Onboarding UX Playbook</div>
+        <div class="article-summary">End-to-end design guide for the onboarding flow — from document upload to first order live across 26 markets.</div>
+        <div class="chips mb-12">
+          <span class="chip chip-gray">20 min read</span>
+          <span class="chip chip-gray">Updated Apr 2</span>
+        </div>
+        <div class="article-footer">
+          <div class="author-row">
+            <div class="author-avatar">SR</div>
+            <div class="author-name">Sam Rivera</div>
+          </div>
+          <button class="card-btn">View Playbook</button>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-meta-top">
+          <div class="chips">
+            <span class="chip chip-blue">Playbook</span>
+            <span class="chip chip-amber">Intermediate</span>
+          </div>
+        </div>
+        <div class="article-title">Running Usability Tests on VSO — Step by Step</div>
+        <div class="article-summary">Recruitment, script writing, facilitation, and synthesis for moderated and unmoderated sessions.</div>
+        <div class="chips mb-12">
+          <span class="chip chip-gray">15 min read</span>
+          <span class="chip chip-gray">Updated Feb 28</span>
+        </div>
+        <div class="article-footer">
+          <div class="author-row">
+            <div class="author-avatar" style="background:var(--amber-bg); color:var(--amber);">CC</div>
+            <div class="author-name">Casey Chen</div>
+          </div>
+          <button class="card-btn">View Playbook</button>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-meta-top">
+          <div class="chips">
+            <span class="chip chip-blue">Playbook</span>
+            <span class="chip chip-red">Advanced</span>
+          </div>
+        </div>
+        <div class="article-title">Multi-Market Design Decision Framework</div>
+        <div class="article-summary">How to make design decisions that scale across Arabic RTL, European, and Asian market contexts.</div>
+        <div class="chips mb-12">
+          <span class="chip chip-gray">25 min read</span>
+          <span class="chip chip-gray">Updated Jan 20</span>
+        </div>
+        <div class="article-footer">
+          <div class="author-row">
+            <div class="author-avatar" style="background:var(--green-bg); color:var(--green);">JL</div>
+            <div class="author-name">Jordan Lee</div>
+          </div>
+          <button class="card-btn">View Playbook</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /page-learning -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE: RESOURCES
+══════════════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-resources">
+  <div class="page-header">
+    <div class="page-headline">Resources</div>
+    <div class="page-sub">Templates, toolkits, and reference documentation — ready to use</div>
+  </div>
+
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">Templates &amp; Toolkits</div>
+        <div class="section-desc">Download and use immediately — no setup required</div>
+      </div>
+    </div>
+    <div class="grid-3">
+
+      <div class="card">
+        <div class="card-type-bar"></div>
+        <div class="card-icon" style="background:var(--primary-50);">📋</div>
+        <div class="card-title">Design Brief Template</div>
+        <div class="card-desc">Problem framing, success metrics, constraints, and stakeholder sign-off in one Figma file.</div>
+        <div class="card-chips">
+          <span class="chip chip-purple">Figma</span>
+          <span class="chip chip-gray">Template</span>
+          <span class="chip chip-gray">Mar 2025</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Use Template</button>
+          <div style="display:flex;gap:4px;">
+            <button class="card-icon-btn" title="Copy link">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4H4a2 2 0 000 4h2M10 4h2a2 2 0 010 4h-2M5 8h6"/></svg>
+            </button>
+            <button class="card-icon-btn" title="Bookmark">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-type-bar"></div>
+        <div class="card-icon" style="background:var(--green-bg);">🧪</div>
+        <div class="card-title">Usability Test Script Kit</div>
+        <div class="card-desc">Moderated and unmoderated test scripts, consent forms, and observation note templates.</div>
+        <div class="card-chips">
+          <span class="chip chip-gray">Notion</span>
+          <span class="chip chip-gray">Template</span>
+          <span class="chip chip-gray">Feb 2025</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Use Template</button>
+          <div style="display:flex;gap:4px;">
+            <button class="card-icon-btn" title="Copy link">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4H4a2 2 0 000 4h2M10 4h2a2 2 0 010 4h-2M5 8h6"/></svg>
+            </button>
+            <button class="card-icon-btn" title="Bookmark">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-type-bar"></div>
+        <div class="card-icon" style="background:var(--primary-50);">🤖</div>
+        <div class="card-title">Claude Prompt Library</div>
+        <div class="card-desc">30+ tested prompts for UX research, writing, documentation, and ideation workflows.</div>
+        <div class="card-chips">
+          <span class="chip chip-blue">AI</span>
+          <span class="chip chip-gray">Apr 2025</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Browse Prompts</button>
+          <div style="display:flex;gap:4px;">
+            <button class="card-icon-btn" title="Copy link">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4H4a2 2 0 000 4h2M10 4h2a2 2 0 010 4h-2M5 8h6"/></svg>
+            </button>
+            <button class="card-icon-btn" title="Bookmark">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h8a1 1 0 011 1v11l-5-3-5 3V3a1 1 0 011-1z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-type-bar"></div>
+        <div class="card-icon" style="background:var(--amber-bg);">📊</div>
+        <div class="card-title">Research Insight Report Template</div>
+        <div class="card-desc">Structured format for presenting research findings to product and leadership teams.</div>
+        <div class="card-chips">
+          <span class="chip chip-amber">Figma</span>
+          <span class="chip chip-gray">Template</span>
+          <span class="chip chip-gray">Jan 2025</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Use Template</button>
+          <button class="card-icon-btn" title="Copy link">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4H4a2 2 0 000 4h2M10 4h2a2 2 0 010 4h-2M5 8h6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-type-bar"></div>
+        <div class="card-icon" style="background:var(--blue-bg);">🗺️</div>
+        <div class="card-title">Vendor Journey Map — Master</div>
+        <div class="card-desc">End-to-end journey across onboarding, daily ops, support, and growth across all 26 markets.</div>
+        <div class="card-chips">
+          <span class="chip chip-purple">Figma</span>
+          <span class="chip chip-gray">Reference</span>
+          <span class="chip chip-gray">Mar 2025</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Open in Figma</button>
+          <button class="card-icon-btn" title="Copy link">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4H4a2 2 0 000 4h2M10 4h2a2 2 0 010 4h-2M5 8h6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-type-bar"></div>
+        <div class="card-icon" style="background:var(--n100);">📝</div>
+        <div class="card-title">Design Handoff Checklist</div>
+        <div class="card-desc">Pre-grooming checklist: accessibility, specs, annotations, component states, edge cases.</div>
+        <div class="card-chips">
+          <span class="chip chip-gray">Notion</span>
+          <span class="chip chip-gray">Checklist</span>
+          <span class="chip chip-gray">Feb 2025</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Open Checklist</button>
+          <button class="card-icon-btn" title="Copy link">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4H4a2 2 0 000 4h2M10 4h2a2 2 0 010 4h-2M5 8h6"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">External tools</div>
+        <div class="section-desc">Tools the team uses and how to get access</div>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tool</th><th>What it's for</th><th>Access</th><th>Request via</th></tr></thead>
+        <tbody>
+          <tr><td><span class="fw-700">Figma</span></td><td>UI design, prototyping, handoff</td><td><span class="chip chip-green">Available</span></td><td>Design team</td></tr>
+          <tr><td><span class="fw-700">Claude</span></td><td>AI research, writing, documentation</td><td><span class="chip chip-blue">IT request</span></td><td>IT portal</td></tr>
+          <tr><td><span class="fw-700">Eppo</span></td><td>A/B testing and feature flags</td><td><span class="chip chip-blue">IT request</span></td><td>Product</td></tr>
+          <tr><td><span class="fw-700">Hotjar</span></td><td>Session recordings, heatmaps</td><td><span class="chip chip-amber">Limited</span></td><td>Research team</td></tr>
+          <tr><td><span class="fw-700">Maze</span></td><td>Unmoderated usability testing</td><td><span class="chip chip-blue">IT request</span></td><td>Research team</td></tr>
+          <tr><td><span class="fw-700">Miro</span></td><td>Workshops, mapping, collaboration</td><td><span class="chip chip-green">Available</span></td><td>Self-serve</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div><!-- /page-resources -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE: DESIGN ASSETS
+══════════════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-assets">
+  <div class="page-header">
+    <div class="page-headline">Design Assets</div>
+    <div class="page-sub">Figma libraries, icon sets, illustration kits, and design system documentation</div>
+  </div>
+
+  <div class="callout success">
+    <div class="callout-icon">✅</div>
+    <div class="callout-body">
+      <strong>Pando DS v3.2 is live.</strong> New navigation components, improved form tokens, and dark mode support shipped April 2025. <a style="color:var(--green);font-weight:600;">See what's new →</a>
+    </div>
+  </div>
+
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">Figma libraries</div>
+        <div class="section-desc">Enable these in your Figma workspace before starting any new project</div>
+      </div>
+    </div>
+    <div class="grid-2">
+
+      <div class="card" style="border-color:var(--primary-200); background:var(--primary-50);">
+        <div class="card-type-bar" style="opacity:1;"></div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <div class="card-icon" style="background:var(--primary); font-size:20px; margin-bottom:0; width:40px;height:40px;">🎨</div>
+          <div>
+            <div class="card-title" style="color:var(--primary);margin-bottom:2px;">Pando Design System</div>
+            <span class="chip chip-blue">Core · Required</span>
+          </div>
+        </div>
+        <div class="card-desc">Delivery Hero's shared component library. All vendor product UI must use Pando components first before building custom.</div>
+        <div class="card-chips">
+          <span class="chip chip-gray">v3.2</span>
+          <span class="chip chip-gray">200+ components</span>
+          <span class="chip chip-gray">Apr 2025</span>
+        </div>
+        <div class="card-action-row always">
+          <button class="card-btn">Open in Figma</button>
+          <button class="card-btn-ghost">View Docs</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <div class="card-icon" style="background:var(--amber-bg); font-size:20px; margin-bottom:0; width:40px;height:40px;">🏪</div>
+          <div>
+            <div class="card-title" style="margin-bottom:2px;">VSO Component Extensions</div>
+            <span class="chip chip-amber">Team Library</span>
+          </div>
+        </div>
+        <div class="card-desc">Vendor-specific UI patterns built on top of Pando. Dashboard widgets, data tables, onboarding flows, and more.</div>
+        <div class="card-chips">
+          <span class="chip chip-gray">v1.4</span>
+          <span class="chip chip-gray">64 components</span>
+          <span class="chip chip-gray">Mar 2025</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Open in Figma</button>
+          <button class="card-btn-ghost">Changelog</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <div class="card-icon" style="background:#F5F3FF; font-size:20px; margin-bottom:0; width:40px;height:40px;">🔣</div>
+          <div>
+            <div class="card-title" style="margin-bottom:2px;">Icon Library</div>
+            <span class="chip chip-purple">Shared</span>
+          </div>
+        </div>
+        <div class="card-desc">900+ icons in stroke and filled styles. Optimized for 16px, 20px, and 24px grids. Updated monthly.</div>
+        <div class="card-chips">
+          <span class="chip chip-gray">900 icons</span>
+          <span class="chip chip-gray">2 styles</span>
+          <span class="chip chip-gray">Jan 2025</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Open in Figma</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <div class="card-icon" style="background:var(--green-bg); font-size:20px; margin-bottom:0; width:40px;height:40px;">🖼️</div>
+          <div>
+            <div class="card-title" style="margin-bottom:2px;">Illustration Kit</div>
+            <span class="chip chip-green">Shared</span>
+          </div>
+        </div>
+        <div class="card-desc">Brand-aligned illustrations for empty states, onboarding, and error pages across all Delivery Hero markets.</div>
+        <div class="card-chips">
+          <span class="chip chip-gray">120 illustrations</span>
+          <span class="chip chip-gray">Feb 2025</span>
+        </div>
+        <div class="card-action-row">
+          <button class="card-btn">Open in Figma</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">Design system reference</div>
+        <div class="section-desc">Core tokens and decisions that underpin every component</div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card" style="cursor:default;">
+        <div class="card-icon" style="background:var(--primary-50); margin-bottom:10px;">🎨</div>
+        <div class="card-title">Color System</div>
+        <div class="card-desc">Primary, semantic, and neutral tokens. Always reference tokens — never hardcode hex values.</div>
+        <div style="display:flex; gap:5px; margin-top:10px;">
+          <div style="width:22px;height:22px;border-radius:5px;background:#4629FF;"></div>
+          <div style="width:22px;height:22px;border-radius:5px;background:#16A34A;"></div>
+          <div style="width:22px;height:22px;border-radius:5px;background:#D97706;"></div>
+          <div style="width:22px;height:22px;border-radius:5px;background:#DC2626;"></div>
+          <div style="width:22px;height:22px;border-radius:5px;background:#121218; border:1px solid var(--n200);"></div>
+        </div>
+      </div>
+      <div class="card" style="cursor:default;">
+        <div class="card-icon" style="background:var(--green-bg); margin-bottom:10px; font-size:22px;">Aa</div>
+        <div class="card-title">Typography Scale</div>
+        <div class="card-desc">Display 32 → H1 24 → H2 20 → H3 16 → Body 14 → Caption 12. Figtree across all products.</div>
+      </div>
+      <div class="card" style="cursor:default;">
+        <div class="card-icon" style="background:var(--amber-bg); margin-bottom:10px;">📐</div>
+        <div class="card-title">Spacing System</div>
+        <div class="card-desc">4px base grid: 4, 8, 12, 16, 20, 24, 32, 40, 48, 64. Never deviate from the grid.</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-assets -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE: RESEARCH
+══════════════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-research">
+  <div class="page-header">
+    <div class="page-headline">Research</div>
+    <div class="page-sub">Insights, usability studies, vendor interviews, and analytics — all centralized</div>
+  </div>
+
+  <div class="grid-4 mb-32">
+    <div class="stat-card">
+      <div class="stat-val">24</div>
+      <div class="stat-label">Studies this year</div>
+      <div class="stat-delta">↑ 8 vs last year</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">340</div>
+      <div class="stat-label">Vendor interviews</div>
+      <div class="stat-delta">↑ 12% growth</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">26</div>
+      <div class="stat-label">Markets covered</div>
+      <div class="stat-delta">↑ 4 new markets</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">87%</div>
+      <div class="stat-label">Insight utilization</div>
+      <div class="stat-delta">↑ 14% this quarter</div>
+    </div>
+  </div>
+
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">Recent studies</div>
+        <div class="section-desc">Latest research added to the repository</div>
+      </div>
+      <span class="section-link">Browse all →</span>
+    </div>
+    <div class="stack-sm">
+      <div class="list-item">
+        <div class="list-icon" style="background:var(--primary-50);">📊</div>
+        <div class="list-content">
+          <div class="list-title">Vendor Onboarding Drop-off Analysis — Q1 2025</div>
+          <div class="list-sub">Exit interviews with 48 vendors who didn't complete onboarding. Root causes and design implications.</div>
+        </div>
+        <div class="list-right">
+          <span class="chip chip-blue">Qualitative</span>
+          <span class="chip chip-gray">Mar 2025</span>
+          <div class="list-item-action">View Insights →</div>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="list-icon" style="background:var(--green-bg);">🧪</div>
+        <div class="list-content">
+          <div class="list-title">Vendor Rewards Feature — A/B Test Results (Eppo)</div>
+          <div class="list-sub">26 markets · 50,000+ restaurant partners · 6 Delivery Hero brands</div>
+        </div>
+        <div class="list-right">
+          <span class="chip chip-green">Quantitative</span>
+          <span class="chip chip-gray">Feb 2025</span>
+          <div class="list-item-action">View Report →</div>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="list-icon" style="background:var(--amber-bg);">🎤</div>
+        <div class="list-content">
+          <div class="list-title">VSO Dashboard Usability Study — 12 Restaurant Owners</div>
+          <div class="list-sub">Moderated sessions, task analysis, synthesis. Key insight: navigation confusion on mobile.</div>
+        </div>
+        <div class="list-right">
+          <span class="chip chip-amber">Usability</span>
+          <span class="chip chip-gray">Jan 2025</span>
+          <div class="list-item-action">View Insights →</div>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="list-icon" style="background:var(--blue-bg);">🌍</div>
+        <div class="list-content">
+          <div class="list-title">Multi-Market Mental Model Study — MENA vs DACH</div>
+          <div class="list-sub">How vendor expectations and behaviors differ between Middle East and European markets.</div>
+        </div>
+        <div class="list-right">
+          <span class="chip chip-purple">Generative</span>
+          <span class="chip chip-gray">Dec 2024</span>
+          <div class="list-item-action">View Insights →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">Log new research</div>
+        <div class="section-desc">Follow these steps before starting any study</div>
+      </div>
+    </div>
+    <div class="callout warning">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body">
+        <strong>Always register before you start.</strong> Log your study in the Research Tracker before recruiting. This prevents duplicate research across teams.
+      </div>
+    </div>
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Create a research brief</div>
+          <div class="step-desc">Define your research questions, methodology, and timeline using the template.</div>
+          <a class="step-cta">→ Open Research Brief Template</a>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Register in the Research Tracker</div>
+          <div class="step-desc">Add your study to the shared Notion database so the team can see what's in progress.</div>
+          <a class="step-cta">→ Open Research Tracker</a>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Upload insights after completion</div>
+          <div class="step-desc">Share the final report using the Insight Report template and tag relevant stakeholders.</div>
+          <a class="step-cta">→ Insight Report Template</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-research -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE: INITIATIVES
+══════════════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-initiatives">
+  <div class="page-header">
+    <div class="page-headline">Initiatives</div>
+    <div class="page-sub">Active design initiatives, roadmap projects, and cross-functional work in progress</div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-pill active">All</button>
+    <button class="filter-pill">🟢 Active</button>
+    <button class="filter-pill">🔵 Discovery</button>
+    <button class="filter-pill">🟡 In Review</button>
+    <button class="filter-pill">⚫ Completed</button>
+  </div>
+
+  <div class="grid-2">
+
+    <div class="initiative-card">
+      <div class="init-header">
+        <div class="init-icon" style="background:var(--green-bg);">🏪</div>
+        <div>
+          <div class="init-title">Vendor Onboarding Redesign</div>
+          <div class="chips mt-4">
+            <span class="chip chip-green">Active</span>
+            <span class="chip chip-gray">Q2 2025</span>
+            <span class="chip chip-blue">Design</span>
+          </div>
+        </div>
+      </div>
+      <div class="init-desc">Full redesign of the onboarding flow to reduce time-to-live from 14 days to under 7 days across 26 markets.</div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Progress</span><span>65%</span></div>
+        <div class="progress-track"><div class="progress-fill" style="width:65%;"></div></div>
+      </div>
+      <div class="init-footer">
+        <button class="card-btn">View Initiative</button>
+        <div class="init-owner">Lead: Sam Rivera · Updated Apr 2</div>
+      </div>
+    </div>
+
+    <div class="initiative-card">
+      <div class="init-header">
+        <div class="init-icon" style="background:var(--primary-50);">⭐</div>
+        <div>
+          <div class="init-title">Vendor Rewards V2</div>
+          <div class="chips mt-4">
+            <span class="chip chip-blue">In Review</span>
+            <span class="chip chip-gray">Q2 2025</span>
+            <span class="chip chip-amber">Research</span>
+          </div>
+        </div>
+      </div>
+      <div class="init-desc">Expanding the rewards program from 3 to 6 Delivery Hero brands, iterating on Q1 A/B test learnings from Eppo.</div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Progress</span><span>80%</span></div>
+        <div class="progress-track"><div class="progress-fill" style="width:80%;"></div></div>
+      </div>
+      <div class="init-footer">
+        <button class="card-btn">View Initiative</button>
+        <div class="init-owner">Lead: Casey Chen · Updated Mar 29</div>
+      </div>
+    </div>
+
+    <div class="initiative-card">
+      <div class="init-header">
+        <div class="init-icon" style="background:var(--amber-bg);">📊</div>
+        <div>
+          <div class="init-title">VSO Dashboard Navigation Overhaul</div>
+          <div class="chips mt-4">
+            <span class="chip chip-blue">Discovery</span>
+            <span class="chip chip-gray">Q3 2025</span>
+          </div>
+        </div>
+      </div>
+      <div class="init-desc">Addressing the #1 pain point from usability testing: vendors can't find what they need in the dashboard within 10 seconds.</div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Progress</span><span>20%</span></div>
+        <div class="progress-track"><div class="progress-fill" style="width:20%;"></div></div>
+      </div>
+      <div class="init-footer">
+        <button class="card-btn">View Initiative</button>
+        <div class="init-owner">Lead: Jordan Lee · Updated Apr 1</div>
+      </div>
+    </div>
+
+    <div class="initiative-card">
+      <div class="init-header">
+        <div class="init-icon" style="background:var(--blue-bg);">🤖</div>
+        <div>
+          <div class="init-title">AI Design Workflow Integration</div>
+          <div class="chips mt-4">
+            <span class="chip chip-green">Active</span>
+            <span class="chip chip-gray">Q2 2025</span>
+            <span class="chip chip-blue">AI</span>
+          </div>
+        </div>
+      </div>
+      <div class="init-desc">Embedding AI tools (Claude, Figma AI) into the team's standard design and research workflow to improve output quality.</div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Progress</span><span>45%</span></div>
+        <div class="progress-track"><div class="progress-fill" style="width:45%;"></div></div>
+      </div>
+      <div class="init-footer">
+        <button class="card-btn">View Initiative</button>
+        <div class="init-owner">Lead: Sam Rivera · Updated Apr 2</div>
+      </div>
+    </div>
+
+    <div class="initiative-card" style="opacity:0.65;">
+      <div class="init-header">
+        <div class="init-icon" style="background:var(--n100);">📱</div>
+        <div>
+          <div class="init-title">VSO Mobile Experience Audit</div>
+          <div class="chips mt-4">
+            <span class="chip chip-gray">Completed</span>
+            <span class="chip chip-gray">Q1 2025</span>
+          </div>
+        </div>
+      </div>
+      <div class="init-desc">Comprehensive audit of the mobile vendor portal. 43 issues documented, 12 critical resolved in Q1 sprint.</div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Completed</span><span>100%</span></div>
+        <div class="progress-track"><div class="progress-fill done" style="width:100%;"></div></div>
+      </div>
+      <div class="init-footer">
+        <button class="card-btn" style="background:var(--n300);">View Results</button>
+        <div class="init-owner">Lead: Casey Chen · Completed Mar 15</div>
+      </div>
+    </div>
+
+    <div class="initiative-card" style="opacity:0.65;">
+      <div class="init-header">
+        <div class="init-icon" style="background:var(--n100);">🗺️</div>
+        <div>
+          <div class="init-title">Vendor Journey Mapping — 2024</div>
+          <div class="chips mt-4">
+            <span class="chip chip-gray">Completed</span>
+            <span class="chip chip-gray">Q4 2024</span>
+          </div>
+        </div>
+      </div>
+      <div class="init-desc">End-to-end journey mapped across 8 touchpoints, 3 vendor segments, and 5 regional variants.</div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Completed</span><span>100%</span></div>
+        <div class="progress-track"><div class="progress-fill done" style="width:100%;"></div></div>
+      </div>
+      <div class="init-footer">
+        <button class="card-btn" style="background:var(--n300);">View Map</button>
+        <div class="init-owner">Lead: Jordan Lee · Completed Dec 20</div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /page-initiatives -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE: SUPPORT
+══════════════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-support">
+  <div class="page-header">
+    <div class="page-headline">Support</div>
+    <div class="page-sub">Get help, ask questions, book office hours, or report an issue — we're here</div>
+  </div>
+
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">How can we help?</div>
+        <div class="section-desc">Four ways to get support, depending on what you need</div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="support-card">
+        <div class="support-icon">📅</div>
+        <div>
+          <div class="support-title">Design Office Hours</div>
+          <div class="support-desc">Every Thursday 14:00–15:00 CET. Open agenda — bring any question, design, or blocker. No preparation needed.</div>
+          <div class="support-cta">Book a slot → <span>Calendly</span></div>
+        </div>
+      </div>
+      <div class="support-card">
+        <div class="support-icon">💬</div>
+        <div>
+          <div class="support-title">Ask on Slack</div>
+          <div class="support-desc">Post to <strong>#vendor-design</strong> for quick questions. Most questions answered within a few hours on workdays.</div>
+          <div class="support-cta">Open #vendor-design →</div>
+        </div>
+      </div>
+      <div class="support-card">
+        <div class="support-icon">🐛</div>
+        <div>
+          <div class="support-title">Report an Issue</div>
+          <div class="support-desc">Found a broken link, outdated content, or something incorrect? Submit a report and we'll fix it fast.</div>
+          <div class="support-cta">Submit issue form →</div>
+        </div>
+      </div>
+      <div class="support-card">
+        <div class="support-icon">💡</div>
+        <div>
+          <div class="support-title">Suggest a Resource</div>
+          <div class="support-desc">Think something is missing? Submit a suggestion for articles, templates, or guides you'd like to see added.</div>
+          <div class="support-cta">Submit suggestion →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">Frequently asked questions</div>
+        <div class="section-desc">Quick answers to the most common questions</div>
+      </div>
+    </div>
+    <div class="stack-sm">
+      <div class="list-item">
+        <div class="list-icon" style="background:var(--primary-50); color:var(--primary);">Q</div>
+        <div class="list-content">
+          <div class="list-title">How do I get access to the Figma team?</div>
+          <div class="list-sub">Ask in #vendor-design or message Alex Morgan. Access granted within 1 business day.</div>
+        </div>
+        <div class="list-item-action" style="opacity:1; color:var(--n400);">Slack →</div>
+      </div>
+      <div class="list-item">
+        <div class="list-icon" style="background:var(--primary-50); color:var(--primary);">Q</div>
+        <div class="list-content">
+          <div class="list-title">How do I request Claude (AI) access?</div>
+          <div class="list-sub">Submit an IT request via the internal portal. Design lead can expedite with a business justification.</div>
+        </div>
+        <div class="list-item-action" style="opacity:1; color:var(--n400);">IT Portal →</div>
+      </div>
+      <div class="list-item">
+        <div class="list-icon" style="background:var(--primary-50); color:var(--primary);">Q</div>
+        <div class="list-content">
+          <div class="list-title">Where is the latest Pando component library?</div>
+          <div class="list-sub">Design Assets → Figma Libraries → Pando Design System. Always use the latest version.</div>
+        </div>
+        <div class="list-item-action" style="opacity:1; color:var(--n400);" data-page="assets">View Assets →</div>
+      </div>
+      <div class="list-item">
+        <div class="list-icon" style="background:var(--primary-50); color:var(--primary);">Q</div>
+        <div class="list-content">
+          <div class="list-title">How do I submit work for design critique?</div>
+          <div class="list-sub">Post your Figma link in #vendor-design at least 24h before the Tuesday session with brief context.</div>
+        </div>
+        <div class="list-item-action" style="opacity:1; color:var(--n400);">Slack →</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section">
+    <div class="section-head mb-16">
+      <div>
+        <div class="section-label">Meet the team</div>
+        <div class="section-desc">Who to reach out to and for what</div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="contact-card">
+        <div class="contact-avatar">AM</div>
+        <div class="fw-700 text-base" style="color:var(--n900);">Alex Morgan</div>
+        <div class="text-sm color-muted mt-4">Design Manager</div>
+        <span class="chip chip-blue" style="margin-top:10px;">Design leadership</span>
+      </div>
+      <div class="contact-card">
+        <div class="contact-avatar" style="background:var(--green-bg); color:var(--green);">JL</div>
+        <div class="fw-700 text-base" style="color:var(--n900);">Jordan Lee</div>
+        <div class="text-sm color-muted mt-4">Staff Designer · Craft Lead</div>
+        <span class="chip chip-green" style="margin-top:10px;">Craft + Design System</span>
+      </div>
+      <div class="contact-card">
+        <div class="contact-avatar" style="background:var(--amber-bg); color:var(--amber);">CC</div>
+        <div class="fw-700 text-base" style="color:var(--n900);">Casey Chen</div>
+        <div class="text-sm color-muted mt-4">Senior Designer</div>
+        <span class="chip chip-amber" style="margin-top:10px;">Research + Sales Eco</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-support -->
+
+
+    </div><!-- /content-center -->
+  </div><!-- /page-scroll -->
+</div><!-- /main-wrapper -->
+
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════════════════════════════ */
+const PAGES = {
+  home:        'Home',
+  ways:        'Ways of Working',
+  learning:    'Learning Hub',
+  resources:   'Resources',
+  assets:      'Design Assets',
+  research:    'Research',
+  initiatives: 'Initiatives',
+  support:     'Support',
+};
+
+function navigate(id) {
+  if (!PAGES[id]) return;
+
+  // Deactivate all pages & nav items
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+  // Activate target
+  const page = document.getElementById('page-' + id);
+  if (page) page.classList.add('active');
+
+  // Activate matching nav item
+  document.querySelectorAll('.nav-item[data-page="' + id + '"]').forEach(n => n.classList.add('active'));
+
+  // Update breadcrumb
+  document.getElementById('breadcrumb').innerHTML =
+    `<span>Vendor UX Hub</span><span class="bc-sep">›</span><span class="bc-current">${PAGES[id]}</span>`;
+
+  // Scroll to top
+  document.getElementById('page-scroll').scrollTo({ top: 0, behavior: 'instant' });
+}
+
+// Attach nav item clicks
+document.querySelectorAll('[data-page]').forEach(el => {
+  el.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navigate(el.dataset.page);
+  });
+});
+
+// Audience pill behavior
+document.querySelectorAll('.audience-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.audience-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+  });
+});
+
+// Filter pill behavior
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    const parent = pill.closest('.filter-bar');
+    if (!parent) return;
+    parent.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+  });
+});
+
+// ⌘K search shortcut
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('search-input').focus();
+  }
+  if (e.key === 'Escape') {
+    document.getElementById('search-input').blur();
+  }
+});
+
+// Card bookmark toggle
+document.querySelectorAll('.card-icon-btn[title="Bookmark"]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    btn.style.color = btn.style.color === 'var(--primary)' ? '' : 'var(--primary)';
+    btn.style.opacity = '1';
+  });
+});
+
+// Copy link flash
+document.querySelectorAll('.card-icon-btn[title="Copy link"]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const orig = btn.innerHTML;
+    btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="2"><path d="M3 8l4 4 6-6"/></svg>`;
+    setTimeout(() => btn.innerHTML = orig, 1200);
+  });
+});
+</script>
+</body>
+</html>
