@@ -13,12 +13,12 @@
 ═══════════════════════════════════════════════════════════════════════ */
 :root {
   /* Brand */
-  --primary:        #4629FF;
-  --primary-dark:   #3318D4;
-  --primary-50:     #EEEAFF;
-  --primary-100:    #C9C0FF;
-  --primary-200:    #A499FF;
-  --primary-300:    #7C66FF;
+  --primary:        #D11920;
+  --primary-dark:   #A8141A;
+  --primary-50:     #FFF1F1;
+  --primary-100:    #FFD6D7;
+  --primary-200:    #FFB0B3;
+  --primary-300:    #F97579;
 
   /* Neutrals */
   --n0:   #FFFFFF;
@@ -42,7 +42,7 @@
   --amber-bg:    #FFFBEB;
   --amber-border:#FDE68A;
   --red:         #DC2626;
-  --red-bg:      #EEEAFF;
+  --red-bg:      #FFF1F1;
   --blue-bg:     #EFF6FF;
   --blue:        #2563EB;
 
@@ -62,7 +62,7 @@
   --shadow-sm: 0 1px 4px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
   --shadow-lg: 0 8px 36px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.05);
-  --shadow-primary: 0 0 0 3px rgba(70,41,255,0.14);
+  --shadow-primary: 0 0 0 3px rgba(209,25,32,0.12);
 
   /* Layout */
   --sidebar: 260px;
@@ -392,7 +392,7 @@ kbd {
 .section-link {
   font-size: 13px;
   font-weight: 600;
-  color: var(--primary);
+  color: var(--n800);
   text-decoration: none;
   white-space: nowrap;
   display: flex;
@@ -402,7 +402,7 @@ kbd {
   margin-top: 3px;
   transition: color 0.12s;
 }
-.section-link:hover { color: var(--primary-dark); }
+.section-link:hover { color: var(--n900); }
 
 /* ═══════════════════════════════════════════════════════════════════════
    SPACING & LAYOUT HELPERS
@@ -458,7 +458,7 @@ kbd {
 }
 .card:hover {
   border-color: var(--primary-200);
-  box-shadow: 0 12px 40px rgba(70,41,255,0.10), 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 12px 40px rgba(209,25,32,0.08), 0 2px 8px rgba(0,0,0,0.06);
   transform: translateY(-3px);
 }
 .card:hover .card-action-row { opacity: 1; }
@@ -517,13 +517,13 @@ kbd {
 .card-link {
   display: inline-flex; align-items: center; gap: 5px;
   font-size: 13px; font-weight: 600;
-  color: var(--primary);
+  color: var(--n800);
   text-decoration: none;
   white-space: nowrap;
   transition: color 0.12s;
   cursor: pointer;
 }
-.card-link:hover { color: var(--primary-dark); }
+.card-link:hover { color: var(--n900); }
 
 .card-icon-btn {
   width: 28px; height: 28px;
@@ -552,7 +552,7 @@ kbd {
 }
 .article-card:hover {
   border-color: var(--primary-200);
-  box-shadow: 0 12px 40px rgba(70,41,255,0.09), 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 12px 40px rgba(209,25,32,0.07), 0 2px 8px rgba(0,0,0,0.06);
   transform: translateY(-3px);
 }
 .article-card:hover .card-action-row { opacity: 1; }
@@ -622,7 +622,7 @@ kbd {
 }
 .list-item:hover {
   border-color: var(--primary-200);
-  box-shadow: 0 6px 20px rgba(70,41,255,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  box-shadow: 0 6px 20px rgba(209,25,32,0.06), 0 1px 4px rgba(0,0,0,0.04);
   background: var(--n0);
   transform: translateX(3px);
 }
@@ -648,18 +648,18 @@ kbd {
   opacity: 0;
   transition: opacity 0.12s, color 0.12s;
   font-size: 13px; font-weight: 600;
-  color: var(--primary);
+  color: var(--n800);
   text-decoration: none;
   display: flex; align-items: center; gap: 4px;
   white-space: nowrap;
 }
-.list-item-action:hover { color: var(--primary-dark); }
+.list-item-action:hover { color: var(--n900); }
 
 /* ═══════════════════════════════════════════════════════════════════════
    HERO
 ═══════════════════════════════════════════════════════════════════════ */
 .hero {
-  background: linear-gradient(140deg, #4629FF 0%, #3318D4 55%, #2D1CAF 100%);
+  background: linear-gradient(140deg, #D11920 0%, #A8141A 55%, #8B1018 100%);
   border-radius: var(--r20);
   padding: 40px 52px;
   color: white;
@@ -801,7 +801,7 @@ kbd {
   cursor: pointer;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
-.session-card:hover { border-color: var(--primary-200); box-shadow: 0 8px 28px rgba(70,41,255,0.08), 0 1px 4px rgba(0,0,0,0.04); transform: translateY(-2px); }
+.session-card:hover { border-color: var(--primary-200); box-shadow: 0 8px 28px rgba(209,25,32,0.06), 0 1px 4px rgba(0,0,0,0.04); transform: translateY(-2px); }
 .session-card.featured {
   background: linear-gradient(135deg, var(--primary-50), var(--primary-100));
   border-color: var(--primary-100);
@@ -821,14 +821,14 @@ kbd {
   display: flex; align-items: center; gap: 9px;
   padding-top: 12px; border-top: 1px solid var(--n150);
 }
-.session-card.featured .session-host { border-top-color: rgba(70,41,255,0.12); }
+.session-card.featured .session-host { border-top-color: rgba(209,25,32,0.10); }
 .host-avatar {
   width: 26px; height: 26px; border-radius: 50%;
   background: var(--primary-100); color: var(--primary);
   font-size: 9.5px; font-weight: 800;
   display: grid; place-items: center; flex-shrink: 0;
 }
-.session-card.featured .host-avatar { background: rgba(70,41,255,0.15); }
+.session-card.featured .host-avatar { background: rgba(209,25,32,0.12); }
 .host-name { font-size: 11.5px; font-weight: 600; color: var(--n600); flex: 1; }
 .session-card.featured .host-name { color: var(--primary-dark); }
 .join-btn {
@@ -871,7 +871,7 @@ kbd {
   font-size: 12px; font-weight: 800;
   display: grid; place-items: center;
   flex-shrink: 0; margin-top: 2px;
-  box-shadow: 0 2px 8px rgba(70,41,255,0.25);
+  box-shadow: 0 2px 8px rgba(209,25,32,0.22);
 }
 .step-body {}
 .step-title { font-size: 14.5px; font-weight: 700; color: #0D0D1A; margin-bottom: 5px; letter-spacing: -0.1px; }
@@ -945,7 +945,7 @@ tbody tr:hover td { background: var(--n50); }
 .filter-pill.active {
   background: var(--primary); color: white;
   border-color: var(--primary); font-weight: 600;
-  box-shadow: 0 2px 8px rgba(70,41,255,0.25);
+  box-shadow: 0 2px 8px rgba(209,25,32,0.22);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -960,7 +960,7 @@ tbody tr:hover td { background: var(--n50); }
   cursor: pointer;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
-.initiative-card:hover { border-color: var(--primary-200); box-shadow: 0 12px 40px rgba(70,41,255,0.10), 0 2px 8px rgba(0,0,0,0.06); transform: translateY(-3px); }
+.initiative-card:hover { border-color: var(--primary-200); box-shadow: 0 12px 40px rgba(209,25,32,0.08), 0 2px 8px rgba(0,0,0,0.06); transform: translateY(-3px); }
 .init-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
 .init-icon { width: 44px; height: 44px; border-radius: var(--r10); display: grid; place-items: center; font-size: 21.5px; flex-shrink: 0; }
 .init-title { font-size: 14.5px; font-weight: 700; color: #0D0D1A; margin-bottom: 6px; line-height: 1.35; letter-spacing: -0.1px; }
@@ -1003,8 +1003,8 @@ tbody tr:hover td { background: var(--n50); }
 }
 .support-title { font-size: 14.5px; font-weight: 700; color: #0D0D1A; margin-bottom: 5px; letter-spacing: -0.1px; }
 .support-desc { font-size: 15.5px; color: var(--n700); line-height: 1.65; }
-.support-cta { display: flex; align-items: center; gap: 5px; margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--primary); text-decoration: none; cursor: pointer; transition: color 0.12s; }
-.support-cta:hover { color: var(--primary-dark); }
+.support-cta { display: flex; align-items: center; gap: 5px; margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--n800); text-decoration: none; cursor: pointer; transition: color 0.12s; }
+.support-cta:hover { color: var(--n900); }
 
 /* ═══════════════════════════════════════════════════════════════════════
    DIVIDER
@@ -1124,7 +1124,7 @@ tbody tr:hover td { background: var(--n50); }
 #drawer-breadcrumb .crumb-sep { color: #d1d5db; }
 #drawer-actions { display: flex; align-items: center; gap: 10px; }
 #drawer-open-link {
-  font-size: 12.5px; font-weight: 600; color: #4629FF;
+  font-size: 12.5px; font-weight: 600; color: #D11920;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -1149,7 +1149,7 @@ tbody tr:hover td { background: var(--n50); }
 .drawer-spinner {
   width: 28px; height: 28px;
   border: 2.5px solid #e5e7eb;
-  border-top-color: #4629FF;
+  border-top-color: #D11920;
   border-radius: 50%;
   animation: spin 0.75s linear infinite;
 }
@@ -1176,7 +1176,7 @@ tbody tr:hover td { background: var(--n50); }
 #drawer-error .err-sub { font-size: 14.5px; color: #6b7280; line-height: 1.6; max-width: 380px; }
 #drawer-error .err-cta {
   display: inline-flex; align-items: center; gap: 6px;
-  padding: 10px 20px; background: #4629FF; color: white;
+  padding: 10px 20px; background: #D11920; color: white;
   border-radius: 8px; font-size: 14px; font-weight: 700;
   text-decoration: none; transition: background 0.12s;
 }
@@ -1191,18 +1191,18 @@ tbody tr:hover td { background: var(--n50); }
 .conf-body p { margin: 0 0 16px; font-size: 15.5px; color: #374151; }
 .conf-body ul, .conf-body ol { margin: 0 0 16px 22px; font-size: 15.5px; color: #374151; }
 .conf-body li { margin-bottom: 6px; line-height: 1.7; }
-.conf-body a { color: #4629FF; text-decoration: none; }
+.conf-body a { color: #D11920; text-decoration: none; }
 .conf-body a:hover { color: #2d1680; }
 .conf-body strong { font-weight: 700; color: #0D0D1A; }
 .conf-body em { font-style: italic; }
-.conf-body code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 13px; background: #f3f4f6; color: #4629FF; padding: 1px 6px; border-radius: 4px; }
+.conf-body code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 13px; background: #f3f4f6; color: #D11920; padding: 1px 6px; border-radius: 4px; }
 .conf-body pre { background: #f8f9fa; border: 1px solid #E9EAEC; border-radius: 10px; padding: 20px 24px; margin: 20px 0; overflow-x: auto; }
 .conf-body pre code { background: none; color: #0D0D1A; padding: 0; font-size: 13px; }
 .conf-body table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14.5px; }
 .conf-body th { background: #f8f9fa; font-weight: 700; color: #0D0D1A; text-align: left; padding: 10px 14px; border: 1px solid #E9EAEC; }
 .conf-body td { padding: 10px 14px; border: 1px solid #E9EAEC; color: #374151; }
 .conf-body tr:hover td { background: #f9fafb; }
-.conf-body blockquote { border-left: 3px solid #4629FF; margin: 20px 0; padding: 12px 20px; background: #f5f3ff; border-radius: 0 8px 8px 0; color: #374151; }
+.conf-body blockquote { border-left: 3px solid #D11920; margin: 20px 0; padding: 12px 20px; background: #f5f3ff; border-radius: 0 8px 8px 0; color: #374151; }
 .conf-body img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
 .conf-body hr { border: none; border-top: 1px solid #E9EAEC; margin: 32px 0; }
 .conf-body .confluence-information-macro { border-radius: 8px; padding: 14px 18px; margin: 16px 0; display: flex; gap: 12px; }
@@ -1270,7 +1270,7 @@ tbody tr:hover td { background: var(--n50); }
   <!-- Sidebar footer -->
   <div style="padding: 14px 16px; border-top: 1px solid var(--n150); flex-shrink: 0; margin-top: auto;">
     <div style="display:flex; align-items:center; gap:10px; padding:8px 6px; border-radius:var(--r8); cursor:pointer; transition:background 0.12s;" onmouseover="this.style.background='var(--n100)'" onmouseout="this.style.background='transparent'">
-      <div style="width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,#4629FF,#7C66FF); display:grid; place-items:center; font-size: 10.5px; font-weight:800; color:white; flex-shrink:0;">FA</div>
+      <div style="width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,#D11920,#F97579); display:grid; place-items:center; font-size: 10.5px; font-weight:800; color:white; flex-shrink:0;">FA</div>
       <div style="min-width:0; flex:1;">
         <div style="font-size: 14px; font-weight:600; color:var(--n800); line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Farzam Anjum</div>
         <div style="font-size: 12px; color:var(--n600); font-weight:500; margin-top:1px;">Vendor UX · Design</div>
@@ -1329,12 +1329,12 @@ tbody tr:hover td { background: var(--n50); }
       <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="position:absolute;inset:0;width:100%;height:100%;">
         <defs>
           <radialGradient id="rg-brand" cx="60%" cy="50%" r="65%" gradientUnits="objectBoundingBox">
-            <stop offset="0%" stop-color="#4629FF" stop-opacity="0.22"/>
-            <stop offset="100%" stop-color="#4629FF" stop-opacity="0"/>
+            <stop offset="0%" stop-color="#D11920" stop-opacity="0.22"/>
+            <stop offset="100%" stop-color="#D11920" stop-opacity="0"/>
           </radialGradient>
           <radialGradient id="rg-accent" cx="95%" cy="5%" r="45%" gradientUnits="objectBoundingBox">
-            <stop offset="0%" stop-color="#7C66FF" stop-opacity="0.16"/>
-            <stop offset="100%" stop-color="#7C66FF" stop-opacity="0"/>
+            <stop offset="0%" stop-color="#F97579" stop-opacity="0.16"/>
+            <stop offset="100%" stop-color="#F97579" stop-opacity="0"/>
           </radialGradient>
           <linearGradient id="lg-fade-in" x1="0%" y1="0%" x2="18%" y2="0%">
             <stop offset="0%" stop-color="#09071A" stop-opacity="1"/>
@@ -1365,7 +1365,7 @@ tbody tr:hover td { background: var(--n50); }
           <rect x="30" y="58" width="38" height="3" rx="1.5" fill="rgba(255,255,255,0.18)"/>
           <rect x="24" y="78" width="5" height="5" rx="1.2" fill="rgba(255,255,255,0.28)"/>
           <rect x="34" y="79" width="46" height="3" rx="1.5" fill="rgba(255,255,255,0.42)"/>
-          <rect x="30" y="90" width="7" height="7" rx="1.5" fill="rgba(70,41,255,0.65)"/>
+          <rect x="30" y="90" width="7" height="7" rx="1.5" fill="rgba(209,25,32,0.60)"/>
           <rect x="42" y="92" width="56" height="2.5" rx="1.2" fill="rgba(255,255,255,0.24)"/>
           <rect x="30" y="103" width="7" height="7" rx="1.5" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.22)" stroke-width="0.8"/>
           <rect x="42" y="105" width="46" height="2.5" rx="1.2" fill="rgba(255,255,255,0.18)"/>
@@ -1373,7 +1373,7 @@ tbody tr:hover td { background: var(--n50); }
           <rect x="42" y="118" width="60" height="2.5" rx="1.2" fill="rgba(255,255,255,0.14)"/>
           <rect x="24" y="134" width="5" height="5" rx="1.2" fill="rgba(255,255,255,0.28)"/>
           <rect x="34" y="135" width="38" height="3" rx="1.5" fill="rgba(255,255,255,0.42)"/>
-          <rect x="30" y="146" width="7" height="7" rx="1.5" fill="rgba(70,41,255,0.50)"/>
+          <rect x="30" y="146" width="7" height="7" rx="1.5" fill="rgba(209,25,32,0.45)"/>
           <rect x="42" y="148" width="52" height="2.5" rx="1.2" fill="rgba(255,255,255,0.22)"/>
           <rect x="30" y="159" width="7" height="7" rx="1.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
           <rect x="42" y="161" width="44" height="2.5" rx="1.2" fill="rgba(255,255,255,0.14)"/>
@@ -1393,15 +1393,15 @@ tbody tr:hover td { background: var(--n50); }
         <!-- Navbar component -->
         <g opacity="0.40">
           <rect x="150" y="30" width="196" height="32" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
-          <circle cx="166" cy="46" r="5.5" fill="rgba(70,41,255,0.72)"/>
+          <circle cx="166" cy="46" r="5.5" fill="rgba(209,25,32,0.65)"/>
           <rect x="180" y="44" width="28" height="3.5" rx="1.5" fill="rgba(255,255,255,0.40)"/>
           <rect x="218" y="44" width="32" height="3.5" rx="1.5" fill="rgba(255,255,255,0.25)"/>
           <rect x="260" y="44" width="24" height="3.5" rx="1.5" fill="rgba(255,255,255,0.18)"/>
-          <rect x="304" y="38" width="36" height="16" rx="5" fill="rgba(70,41,255,0.55)"/>
+          <rect x="304" y="38" width="36" height="16" rx="5" fill="rgba(209,25,32,0.50)"/>
           <rect x="311" y="44" width="22" height="3" rx="1.2" fill="rgba(255,255,255,0.75)"/>
         </g>
         <g opacity="0.65">
-          <rect x="150" y="17" width="52" height="13" rx="3.5" fill="rgba(70,41,255,0.5)" stroke="rgba(124,102,255,0.6)" stroke-width="0.8"/>
+          <rect x="150" y="17" width="52" height="13" rx="3.5" fill="rgba(209,25,32,0.45)" stroke="rgba(209,25,32,0.55)" stroke-width="0.8"/>
           <rect x="156" y="22" width="40" height="3" rx="1.5" fill="rgba(255,255,255,0.8)"/>
         </g>
         <!-- Card component -->
@@ -1409,29 +1409,29 @@ tbody tr:hover td { background: var(--n50); }
           <rect x="150" y="78" width="170" height="148" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
           <rect x="150" y="78" width="170" height="40" rx="10" fill="rgba(255,255,255,0.05)"/>
           <line x1="150" y1="118" x2="320" y2="118" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-          <circle cx="170" cy="98" r="12" fill="rgba(70,41,255,0.6)"/>
+          <circle cx="170" cy="98" r="12" fill="rgba(209,25,32,0.55)"/>
           <circle cx="170" cy="98" r="12" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
           <rect x="190" y="91" width="76" height="4" rx="2" fill="rgba(255,255,255,0.42)"/>
           <rect x="190" y="100" width="52" height="3" rx="1.5" fill="rgba(255,255,255,0.22)"/>
-          <rect x="285" y="90" width="28" height="14" rx="5" fill="rgba(70,41,255,0.50)"/>
+          <rect x="285" y="90" width="28" height="14" rx="5" fill="rgba(209,25,32,0.45)"/>
           <rect x="290" y="95" width="18" height="3" rx="1.2" fill="rgba(255,255,255,0.72)"/>
           <rect x="162" y="128" width="146" height="4" rx="2" fill="rgba(255,255,255,0.18)"/>
           <rect x="162" y="140" width="130" height="4" rx="2" fill="rgba(255,255,255,0.13)"/>
           <rect x="162" y="152" width="140" height="4" rx="2" fill="rgba(255,255,255,0.10)"/>
           <line x1="150" y1="170" x2="320" y2="170" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-          <rect x="162" y="178" width="66" height="20" rx="6" fill="rgba(70,41,255,0.62)"/>
+          <rect x="162" y="178" width="66" height="20" rx="6" fill="rgba(209,25,32,0.58)"/>
           <rect x="175" y="185" width="40" height="3" rx="1.5" fill="rgba(255,255,255,0.82)"/>
           <rect x="238" y="178" width="66" height="20" rx="6" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.20)" stroke-width="1"/>
           <rect x="251" y="185" width="40" height="3" rx="1.5" fill="rgba(255,255,255,0.38)"/>
         </g>
         <g opacity="0.65">
-          <rect x="199" y="226" width="38" height="13" rx="3.5" fill="rgba(70,41,255,0.5)" stroke="rgba(124,102,255,0.6)" stroke-width="0.8"/>
+          <rect x="199" y="226" width="38" height="13" rx="3.5" fill="rgba(209,25,32,0.45)" stroke="rgba(209,25,32,0.55)" stroke-width="0.8"/>
           <rect x="205" y="231" width="26" height="3" rx="1.5" fill="rgba(255,255,255,0.8)"/>
         </g>
         <!-- Input component -->
         <g opacity="0.36">
           <rect x="150" y="236" width="170" height="30" rx="7" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
-          <rect x="150" y="236" width="96" height="30" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(70,41,255,0.55)" stroke-width="1.5"/>
+          <rect x="150" y="236" width="96" height="30" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(209,25,32,0.50)" stroke-width="1.5"/>
           <rect x="162" y="244" width="48" height="3" rx="1.5" fill="rgba(255,255,255,0.32)"/>
           <rect x="210" y="241" width="1.5" height="10" rx="0.75" fill="rgba(255,255,255,0.65)"/>
           <rect x="268" y="248" width="42" height="3" rx="1.5" fill="rgba(255,255,255,0.16)"/>
@@ -1447,7 +1447,7 @@ tbody tr:hover td { background: var(--n50); }
           <rect x="506" y="88" width="22" height="3.5" rx="1.5" fill="rgba(255,255,255,0.18)"/>
           <rect x="348" y="113" width="24" height="3.5" rx="1.5" fill="rgba(255,255,255,0.22)"/>
           <rect x="404" y="113" width="32" height="3.5" rx="1.5" fill="rgba(255,255,255,0.16)"/>
-          <rect x="456" y="111" width="36" height="8" rx="3.5" fill="rgba(70,41,255,0.45)"/>
+          <rect x="456" y="111" width="36" height="8" rx="3.5" fill="rgba(209,25,32,0.38)"/>
           <rect x="506" y="113" width="20" height="3.5" rx="1.5" fill="rgba(255,255,255,0.14)"/>
           <line x1="336" y1="124" x2="536" y2="124" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
           <rect x="348" y="133" width="30" height="3.5" rx="1.5" fill="rgba(255,255,255,0.18)"/>
@@ -1457,7 +1457,7 @@ tbody tr:hover td { background: var(--n50); }
           <line x1="336" y1="144" x2="536" y2="144" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
           <rect x="348" y="153" width="26" height="3.5" rx="1.5" fill="rgba(255,255,255,0.15)"/>
           <rect x="404" y="153" width="30" height="3.5" rx="1.5" fill="rgba(255,255,255,0.10)"/>
-          <rect x="456" y="151" width="36" height="8" rx="3.5" fill="rgba(70,41,255,0.40)"/>
+          <rect x="456" y="151" width="36" height="8" rx="3.5" fill="rgba(209,25,32,0.35)"/>
           <rect x="506" y="153" width="18" height="3.5" rx="1.5" fill="rgba(255,255,255,0.09)"/>
           <line x1="336" y1="164" x2="536" y2="164" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
           <rect x="348" y="173" width="22" height="3.5" rx="1.5" fill="rgba(255,255,255,0.12)"/>
@@ -1467,14 +1467,14 @@ tbody tr:hover td { background: var(--n50); }
           <line x1="336" y1="184" x2="536" y2="184" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
           <rect x="348" y="193" width="28" height="3.5" rx="1.5" fill="rgba(255,255,255,0.09)"/>
           <rect x="404" y="193" width="22" height="3.5" rx="1.5" fill="rgba(255,255,255,0.06)"/>
-          <rect x="456" y="191" width="36" height="8" rx="3.5" fill="rgba(70,41,255,0.25)"/>
+          <rect x="456" y="191" width="36" height="8" rx="3.5" fill="rgba(209,25,32,0.22)"/>
           <rect x="506" y="193" width="16" height="3.5" rx="1.5" fill="rgba(255,255,255,0.05)"/>
           <line x1="336" y1="204" x2="536" y2="204" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
           <rect x="348" y="213" width="20" height="3.5" rx="1.5" fill="rgba(255,255,255,0.06)"/>
           <rect x="404" y="213" width="26" height="3.5" rx="1.5" fill="rgba(255,255,255,0.04)"/>
           <rect x="506" y="213" width="14" height="3.5" rx="1.5" fill="rgba(255,255,255,0.03)"/>
           <line x1="336" y1="224" x2="536" y2="224" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
-          <rect x="380" y="238" width="22" height="10" rx="4" fill="rgba(70,41,255,0.40)"/>
+          <rect x="380" y="238" width="22" height="10" rx="4" fill="rgba(209,25,32,0.35)"/>
           <rect x="384" y="241" width="14" height="3" rx="1.2" fill="rgba(255,255,255,0.7)"/>
           <rect x="412" y="238" width="22" height="10" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)" stroke-width="0.8"/>
           <rect x="416" y="241" width="14" height="3" rx="1.2" fill="rgba(255,255,255,0.3)"/>
@@ -1482,17 +1482,17 @@ tbody tr:hover td { background: var(--n50); }
           <rect x="448" y="241" width="14" height="3" rx="1.2" fill="rgba(255,255,255,0.2)"/>
         </g>
         <g opacity="0.55">
-          <rect x="386" y="64" width="56" height="13" rx="3.5" fill="rgba(70,41,255,0.45)" stroke="rgba(124,102,255,0.55)" stroke-width="0.8"/>
+          <rect x="386" y="64" width="56" height="13" rx="3.5" fill="rgba(209,25,32,0.38)" stroke="rgba(209,25,32,0.45)" stroke-width="0.8"/>
           <rect x="392" y="69" width="44" height="3" rx="1.5" fill="rgba(255,255,255,0.75)"/>
         </g>
         <!-- Connection lines -->
-        <g stroke="rgba(124,102,255,0.28)" stroke-width="1" fill="none" stroke-dasharray="5,3.5">
+        <g stroke="rgba(209,25,32,0.22)" stroke-width="1" fill="none" stroke-dasharray="5,3.5">
           <path d="M 132 148 L 150 148"/>
           <path d="M 235 62 L 235 70 L 235 78"/>
           <path d="M 320 148 L 336 148"/>
           <path d="M 235 226 L 235 236"/>
         </g>
-        <g fill="#7C66FF" opacity="0.55">
+        <g fill="#F97579" opacity="0.55">
           <circle cx="132" cy="148" r="3"/> <circle cx="150" cy="148" r="3"/>
           <circle cx="235" cy="62" r="3"/>  <circle cx="235" cy="78" r="3"/>
           <circle cx="320" cy="148" r="3"/> <circle cx="336" cy="148" r="3"/>
@@ -1506,10 +1506,10 @@ tbody tr:hover td { background: var(--n50); }
     <div class="hero-banner-inner">
       <div style="max-width:580px;">
         <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;">
-          <span style="width:7px;height:7px;border-radius:50%;background:#4629FF;display:inline-block;flex-shrink:0;box-shadow:0 0 8px rgba(70,41,255,0.8);"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:#D11920;display:inline-block;flex-shrink:0;box-shadow:0 0 8px rgba(209,25,32,0.72);"></span>
           <span style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.45);letter-spacing:0.12em;text-transform:uppercase;">Vendor UX Hub</span>
         </div>
-        <h1 style="font-size:42px;font-weight:800;color:#fff;letter-spacing:-1.5px;line-height:1.08;margin:0 0 20px 0;">The design team<br>for the vendors platform</h1>
+        <h1 style="font-size:42px;font-weight:800;color:#fff;letter-spacing:-1.5px;line-height:1.08;margin:0 0 20px 0;">The design team behind<br>Partner, Go &amp; Backoffice</h1>
         <div style="height:1px;background:rgba(255,255,255,0.08);margin-bottom:20px;"></div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 32px;">
           <div>
@@ -1518,7 +1518,7 @@ tbody tr:hover td { background: var(--n50); }
           </div>
           <div>
             <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);margin-bottom:6px;">Purpose</div>
-            <div style="font-size:14px;color:rgba(255,255,255,0.68);line-height:1.55;">Deliver <strong style="color:#7C66FF;font-weight:700;">best-in-class</strong> UX solutions to streamline our partners' operations and enable them to unlock their full potential effortlessly.</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.68);line-height:1.55;">Deliver <strong style="color:#F97579;font-weight:700;">best-in-class</strong> UX solutions to streamline our partners' operations and enable them to unlock their full potential effortlessly.</div>
           </div>
         </div>
       </div>
@@ -1535,53 +1535,53 @@ tbody tr:hover td { background: var(--n50); }
     </div>
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;">
 
-      <div onclick="navigate('initiatives')" style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
-        <div style="height:4px;background:linear-gradient(90deg,#4629FF,#7C66FF);"></div>
+      <div onclick="navigate('initiatives')" style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+        <div style="height:4px;background:linear-gradient(90deg,#D11920,#F97579);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
-          <div style="width:34px;height:34px;border-radius:10px;background:#EEEAFF;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">✨</div>
+          <div style="width:34px;height:34px;border-radius:10px;background:#FFF1F1;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">✨</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Active design initiatives</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">What the team is shipping right now — initiatives across delivery, discovery, and optimisation tracks.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">See all initiatives →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">See all initiatives →</div>
         </div>
       </div>
 
-      <div onclick="navigate('assets')" style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div onclick="navigate('assets')" style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#7C3AED,#A78BFA);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#F5F3FF;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">🎨</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Design systems</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">Cape, Chamigo, and Armor — which to use when and how they're structured.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">Explore systems →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">Explore systems →</div>
         </div>
       </div>
 
-      <div onclick="navigate('research')" style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div onclick="navigate('research')" style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#D97706,#FBBF24);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#FFFBEB;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">🔍</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Key research to know</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">Partner personas, Berlin vendor visit findings, UXS studies, and the most-referenced insights.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">View research →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">View research →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#0284C7,#38BDF8);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">🗂️</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Figma spaces</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">How our Figma workspaces are organised — what lives where and how to keep your space findable.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">Open Figma guide →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">Open Figma guide →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#16A34A,#4ADE80);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#F0FDF4;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">♿</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Accessibility</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">WCAG standards, colour contrast requirements, keyboard navigation patterns, and screen-reader best practices.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">View guidelines →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">View guidelines →</div>
         </div>
       </div>
 
@@ -1667,7 +1667,7 @@ tbody tr:hover td { background: var(--n50); }
     <div class="grid-2">
       <div class="stack-sm">
         <div class="list-item" onclick="openConfluenceDrawer('https://atlassian.cloud.deliveryhero.group/wiki/spaces/DSGNGSR/pages/1232208227/Vendor+UX+OS+v0','Vendor UX OS','1232208227')">
-          <div class="list-icon" style="background:#EEEAFF;">🗂️</div>
+          <div class="list-icon" style="background:#FFF1F1;">🗂️</div>
           <div class="list-content">
             <div class="list-title">Vendor UX OS</div>
             <div class="list-sub">A lean operating system to reduce friction and protect focus time.</div>
@@ -1677,7 +1677,7 @@ tbody tr:hover td { background: var(--n50); }
           </div>
         </div>
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;">📊</div>
+          <div class="list-icon" style="background:#FFF1F1;">📊</div>
           <div class="list-content">
             <div class="list-title">Capacity Planning</div>
             <div class="list-sub">How we track team capacity and create visibility of all initiatives on a quarterly basis.</div>
@@ -1687,7 +1687,7 @@ tbody tr:hover td { background: var(--n50); }
           </div>
         </div>
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;">🤝</div>
+          <div class="list-icon" style="background:#FFF1F1;">🤝</div>
           <div class="list-content">
             <div class="list-title">Ceremonies</div>
             <div class="list-sub">How we come together — standups, retrospectives, and planning sessions.</div>
@@ -1697,7 +1697,7 @@ tbody tr:hover td { background: var(--n50); }
           </div>
         </div>
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;">🔍</div>
+          <div class="list-icon" style="background:#FFF1F1;">🔍</div>
           <div class="list-content">
             <div class="list-title">Design Reviews</div>
             <div class="list-sub">How we maintain quality standards before work moves forward.</div>
@@ -1729,7 +1729,7 @@ tbody tr:hover td { background: var(--n50); }
           </div>
         </div>
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;">🕐</div>
+          <div class="list-icon" style="background:#FFF1F1;">🕐</div>
           <div class="list-content">
             <div class="list-title">Open Office Hours</div>
             <div class="list-sub">Weekly 1:1 slots for UX Ops support, guidance, and troubleshooting.</div>
@@ -1759,7 +1759,7 @@ tbody tr:hover td { background: var(--n50); }
           <div class="list-icon" style="background:#EDE9FE;font-size: 15.5px;">🧩</div>
           <div class="list-content">
             <div class="list-title">Cape</div>
-            <div class="list-sub">Delivery Hero's shared design system — use first, always</div>
+            <div class="list-sub">Delivery Hero&#39;s shared design system — use first, always</div>
           </div>
           <div class="list-item-action" onclick="navigate('assets')" style="cursor:pointer;">Open →</div>
         </div>
@@ -1829,27 +1829,27 @@ tbody tr:hover td { background: var(--n50); }
       </div>
     </div>
     <div class="grid-3">
-      <div class="card" style="cursor:pointer;" onclick="navigate('assets')" onmouseover="this.style.borderColor='var(--primary)';this.style.boxShadow='0 4px 20px rgba(70,41,255,0.07)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='';this.style.boxShadow='';this.style.transform=''">
+      <div class="card" style="cursor:pointer;" onclick="navigate('assets')" onmouseover="this.style.borderColor='var(--primary)';this.style.boxShadow='0 4px 20px rgba(209,25,32,0.05)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='';this.style.boxShadow='';this.style.transform=''">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-          <div style="width:36px;height:36px;border-radius:9px;background:var(--primary-50);border:1px solid rgba(70,41,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <div style="width:36px;height:36px;border-radius:9px;background:var(--primary-50);border:1px solid rgba(209,25,32,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <span style="font-size: 17.5px;line-height:1;">🤝</span>
           </div>
           <div class="card-title" style="margin-bottom:0;">Partner</div>
         </div>
         <div class="card-desc">The main Figma space for partner-facing product design work.</div>
       </div>
-      <div class="card" style="cursor:pointer;" onclick="navigate('assets')" onmouseover="this.style.borderColor='var(--primary)';this.style.boxShadow='0 4px 20px rgba(70,41,255,0.07)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='';this.style.boxShadow='';this.style.transform=''">
+      <div class="card" style="cursor:pointer;" onclick="navigate('assets')" onmouseover="this.style.borderColor='var(--primary)';this.style.boxShadow='0 4px 20px rgba(209,25,32,0.05)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='';this.style.boxShadow='';this.style.transform=''">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-          <div style="width:36px;height:36px;border-radius:9px;background:var(--primary-50);border:1px solid rgba(70,41,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <div style="width:36px;height:36px;border-radius:9px;background:var(--primary-50);border:1px solid rgba(209,25,32,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <span style="font-size: 17.5px;line-height:1;">🚚</span>
           </div>
           <div class="card-title" style="margin-bottom:0;">Go</div>
         </div>
         <div class="card-desc">Figma space for the Go product area — logistics and operations.</div>
       </div>
-      <div class="card" style="cursor:pointer;" onclick="navigate('assets')" onmouseover="this.style.borderColor='var(--primary)';this.style.boxShadow='0 4px 20px rgba(70,41,255,0.07)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='';this.style.boxShadow='';this.style.transform=''">
+      <div class="card" style="cursor:pointer;" onclick="navigate('assets')" onmouseover="this.style.borderColor='var(--primary)';this.style.boxShadow='0 4px 20px rgba(209,25,32,0.05)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='';this.style.boxShadow='';this.style.transform=''">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-          <div style="width:36px;height:36px;border-radius:9px;background:var(--primary-50);border:1px solid rgba(70,41,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <div style="width:36px;height:36px;border-radius:9px;background:var(--primary-50);border:1px solid rgba(209,25,32,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <span style="font-size: 17.5px;line-height:1;">⚙️</span>
           </div>
           <div class="card-title" style="margin-bottom:0;">Backoffice</div>
@@ -1871,53 +1871,53 @@ tbody tr:hover td { background: var(--n50); }
     </div>
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;">
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
-        <div style="height:4px;background:linear-gradient(90deg,#4629FF,#7C66FF);"></div>
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+        <div style="height:4px;background:linear-gradient(90deg,#D11920,#F97579);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
-          <div style="width:34px;height:34px;border-radius:10px;background:#EEEAFF;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">📐</div>
+          <div style="width:34px;height:34px;border-radius:10px;background:#FFF1F1;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">📐</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Handoff &amp; Specs</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">Design-ready Figma files with annotated specs, component states, and documented edge cases.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">Handoff guide →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">Handoff guide →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#16A34A,#4ADE80);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#F0FDF4;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">🧩</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Component library</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">Cape DS and Chamigo — which to use when, Storybook references, and contribution guidelines.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">View components →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">View components →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#D97706,#FBBF24);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#FFFBEB;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">🔍</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Design QA</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">How designers review shipped implementations, raise UI bugs, and close the Figma-to-production loop.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">QA checklist →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">QA checklist →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#7C3AED,#A78BFA);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#F5F3FF;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">🎨</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Design tokens</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">Colour, spacing, radius, and typography tokens — how they map to code variables and when to use them.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">View tokens →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">View tokens →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#0284C7,#38BDF8);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">⚙️</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Dev Mode</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">How engineers use Figma's Developer Mode and Cape Storybook to inspect designs and extract values.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">Dev Mode guide →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">Dev Mode guide →</div>
         </div>
       </div>
 
@@ -1934,53 +1934,53 @@ tbody tr:hover td { background: var(--n50); }
     </div>
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;">
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
-        <div style="height:4px;background:linear-gradient(90deg,#4629FF,#7C66FF);"></div>
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+        <div style="height:4px;background:linear-gradient(90deg,#D11920,#F97579);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
-          <div style="width:34px;height:34px;border-radius:10px;background:#EEEAFF;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">📋</div>
+          <div style="width:34px;height:34px;border-radius:10px;background:#FFF1F1;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">📋</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Discovery Briefs</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">How PMs and designers co-write problem statements, scope boundaries, and hypotheses before design begins.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">View template →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">View template →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#16A34A,#4ADE80);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#F0FDF4;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">🗓️</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Sprint Collaboration</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">How we size design tasks alongside product delivery and keep design progress visible to PMs.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">How we work →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">How we work →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#D97706,#FBBF24);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#FFFBEB;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">🖼️</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Design Reviews</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">How PMs participate in design critiques, give structured feedback, and unlock design decisions.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">Join a review →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">Join a review →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#7C3AED,#A78BFA);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#F5F3FF;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">🎯</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">OKR Mapping</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">How design initiatives connect to product OKRs — demonstrating impact beyond output.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">View mapping →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">View mapping →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#0284C7,#38BDF8);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">📊</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Stakeholder Comms</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">How we present design work, gather structured sign-off, and manage expectations with stakeholders.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">Presentation tips →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">Presentation tips →</div>
         </div>
       </div>
 
@@ -1997,53 +1997,53 @@ tbody tr:hover td { background: var(--n50); }
     </div>
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;">
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
-        <div style="height:4px;background:linear-gradient(90deg,#4629FF,#7C66FF);"></div>
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+        <div style="height:4px;background:linear-gradient(90deg,#D11920,#F97579);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
-          <div style="width:34px;height:34px;border-radius:10px;background:#EEEAFF;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">📈</div>
+          <div style="width:34px;height:34px;border-radius:10px;background:#FFF1F1;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">📈</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Data Visualisation</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">How we design charts, dashboards, and data-dense UIs — including our Data Viz Guidelines and chart decision framework.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">View guidelines →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">View guidelines →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#16A34A,#4ADE80);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#F0FDF4;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">🎯</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Metrics Definition</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">How design and data jointly define success metrics before launch — shared measurement framework and sign-off process.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">View framework →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">View framework →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#D97706,#FBBF24);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#FFFBEB;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">🏷️</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Event Tracking</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">Analytics instrumentation — naming conventions, event schemas, and how to flag new tracking events during handoff.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">See spec template →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">See spec template →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#7C3AED,#A78BFA);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#F5F3FF;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">💡</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Insight Reports</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">How data findings and dashboards feed into design decisions — consuming Looker reports and translating them to actions.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">See reports →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">See reports →</div>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(70,41,255,0.10),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
+      <div style="background:#fff;border:1px solid var(--n150);border-radius:var(--r12);overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s,transform 0.18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);display:flex;flex-direction:column;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 12px 40px rgba(209,25,32,0.08),0 2px 8px rgba(0,0,0,0.06)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n150)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.05)';this.style.transform='none'">
         <div style="height:4px;background:linear-gradient(90deg,#0284C7,#38BDF8);"></div>
         <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;">
           <div style="width:34px;height:34px;border-radius:10px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;">🧪</div>
           <div style="font-size:13.5px;font-weight:700;color:#0D0D1A;letter-spacing:-0.1px;margin-bottom:6px;">Experiment Design</div>
           <div style="font-size:12.5px;color:var(--n600);line-height:1.55;flex:1;">How we design A/B tests together — hypothesis framing, variant design, and interpreting results for next iterations.</div>
-          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:var(--primary);">A/B guide →</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--n100);font-size:12px;font-weight:600;color:#0D0D1A;">A/B guide →</div>
         </div>
       </div>
 
@@ -2071,8 +2071,8 @@ tbody tr:hover td { background: var(--n50); }
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:16px;">
 
       <!-- Vendor UX OS -->
-      <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,transform 0.15s,border-color 0.15s;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(70,41,255,0.12)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none';this.style.transform='none'" onclick="openConfluenceDrawer('https://atlassian.cloud.deliveryhero.group/wiki/spaces/DSGNGSR/pages/1232208227/Vendor+UX+OS+v0','Vendor UX OS','1232208227')">
-        <div style="height:170px; position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#4629FF 100%);">
+      <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,transform 0.15s,border-color 0.15s;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(209,25,32,0.10)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none';this.style.transform='none'" onclick="openConfluenceDrawer('https://atlassian.cloud.deliveryhero.group/wiki/spaces/DSGNGSR/pages/1232208227/Vendor+UX+OS+v0','Vendor UX OS','1232208227')">
+        <div style="height:170px; position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#D11920 100%);">
           <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.13" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="wow-os-grid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M 22 0 L 0 0 0 22" fill="none" stroke="white" stroke-width="0.6"/></pattern></defs><rect width="100%" height="100%" fill="url(#wow-os-grid)"/></svg>
           <svg style="position:absolute;right:-18px;bottom:-18px;width:140px;height:140px;opacity:0.18" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="44" fill="none" stroke="white" stroke-width="2.5"/><circle cx="50" cy="50" r="29" fill="none" stroke="white" stroke-width="1.5"/><circle cx="50" cy="50" r="7" fill="white" opacity="0.7"/><rect x="46" y="2" width="8" height="13" rx="3" fill="white"/><rect x="46" y="85" width="8" height="13" rx="3" fill="white"/><rect x="2" y="46" width="13" height="8" rx="3" fill="white"/><rect x="85" y="46" width="13" height="8" rx="3" fill="white"/><rect x="71" y="10" width="8" height="11" rx="3" fill="white" transform="rotate(45 75 15)"/><rect x="10" y="71" width="8" height="11" rx="3" fill="white" transform="rotate(45 14 75)"/></svg>
           <svg style="position:absolute;left:18px;top:18px;opacity:0.28" viewBox="0 0 70 50" width="70" height="50" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="5" fill="white"/><circle cx="35" cy="28" r="7" fill="none" stroke="white" stroke-width="1.8"/><circle cx="60" cy="10" r="4" fill="white" opacity="0.6"/><line x1="10" y1="10" x2="35" y2="28" stroke="white" stroke-width="1.2" opacity="0.7"/><line x1="60" y1="10" x2="35" y2="28" stroke="white" stroke-width="1.2" opacity="0.7"/><line x1="35" y1="28" x2="35" y2="45" stroke="white" stroke-width="1.2" opacity="0.5" stroke-dasharray="3,3"/></svg>
@@ -2093,8 +2093,8 @@ tbody tr:hover td { background: var(--n50); }
       </div>
 
       <!-- Capacity Planning -->
-      <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,transform 0.15s,border-color 0.15s;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(70,41,255,0.12)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none';this.style.transform='none'">
-        <div style="height:170px; position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#4629FF 100%);">
+      <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,transform 0.15s,border-color 0.15s;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(209,25,32,0.10)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none';this.style.transform='none'">
+        <div style="height:170px; position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#D11920 100%);">
           <!-- Sprint planning board: 3 kanban columns with design cards -->
           <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.28" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
             <line x1="104" y1="10" x2="104" y2="160" stroke="white" stroke-width="0.8" opacity="0.35"/>
@@ -2141,8 +2141,8 @@ tbody tr:hover td { background: var(--n50); }
       </div>
 
       <!-- Ceremonies -->
-      <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,transform 0.15s,border-color 0.15s;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(70,41,255,0.12)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none';this.style.transform='none'">
-        <div style="height:170px; position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#4629FF 100%);">
+      <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,transform 0.15s,border-color 0.15s;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(209,25,32,0.10)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none';this.style.transform='none'">
+        <div style="height:170px; position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#D11920 100%);">
           <!-- 6 people around a round table (team ceremony) -->
           <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.28" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
             <circle cx="150" cy="85" r="42" fill="white" opacity="0.05"/>
@@ -2186,8 +2186,8 @@ tbody tr:hover td { background: var(--n50); }
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:16px;">
 
       <!-- Design Reviews -->
-      <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,transform 0.15s,border-color 0.15s;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(70,41,255,0.12)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none';this.style.transform='none'">
-        <div style="height:170px; position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#4629FF 100%);">
+      <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,transform 0.15s,border-color 0.15s;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(209,25,32,0.10)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none';this.style.transform='none'">
+        <div style="height:170px; position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#D11920 100%);">
           <!-- Figma artboard with corner handles + cursor + annotation pin -->
           <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.28" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
             <!-- Artboard frame -->
@@ -2231,8 +2231,8 @@ tbody tr:hover td { background: var(--n50); }
       </div>
 
       <!-- Research & Insights -->
-      <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,transform 0.15s,border-color 0.15s;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(70,41,255,0.12)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none';this.style.transform='none'">
-        <div style="height:170px; position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#4629FF 100%);">
+      <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,transform 0.15s,border-color 0.15s;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(209,25,32,0.10)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none';this.style.transform='none'">
+        <div style="height:170px; position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#D11920 100%);">
           <!-- Affinity map: 3 clusters of sticky notes (UX research) -->
           <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.28" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
             <!-- Cluster 1: top-left -->
@@ -2273,8 +2273,8 @@ tbody tr:hover td { background: var(--n50); }
       </div>
 
       <!-- Onboarding -->
-      <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,transform 0.15s,border-color 0.15s;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(70,41,255,0.12)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none';this.style.transform='none'">
-        <div style="height:170px; position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#4629FF 100%);">
+      <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,transform 0.15s,border-color 0.15s;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(209,25,32,0.10)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none';this.style.transform='none'">
+        <div style="height:170px; position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#D11920 100%);">
           <!-- Figma-style layers panel + artboard canvas (Onboarding = learning the tools) -->
           <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.28" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
             <!-- Layers panel bg -->
@@ -2337,8 +2337,8 @@ tbody tr:hover td { background: var(--n50); }
     </div>
 
     <!-- Vendor UX Open Office Hours — wide featured card -->
-    <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,border-color 0.15s; display:grid; grid-template-columns:280px 1fr;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(70,41,255,0.12)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none'">
-      <div style="position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#4629FF 100%); min-height:190px;">
+    <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r14); overflow:hidden; cursor:pointer; transition:box-shadow 0.15s,border-color 0.15s; display:grid; grid-template-columns:280px 1fr;" onmouseover="this.style.borderColor='var(--primary-200)';this.style.boxShadow='0 8px 32px rgba(209,25,32,0.10)'" onmouseout="this.style.borderColor='var(--n200)';this.style.boxShadow='none'">
+      <div style="position:relative; overflow:hidden; background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#D11920 100%); min-height:190px;">
         <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.1" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="wow-ooh-grid" width="28" height="28" patternUnits="userSpaceOnUse"><rect width="28" height="28" fill="none" stroke="white" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(#wow-ooh-grid)"/></svg>
         <svg style="position:absolute;right:-25px;top:50%;transform:translateY(-50%);width:160px;height:160px;opacity:0.18" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="44" fill="none" stroke="white" stroke-width="2.5"/><circle cx="50" cy="50" r="32" fill="none" stroke="white" stroke-width="1.5"/><line x1="50" y1="50" x2="50" y2="16" stroke="white" stroke-width="3.5" stroke-linecap="round"/><line x1="50" y1="50" x2="72" y2="60" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="50" cy="50" r="3.5" fill="white"/><circle cx="50" cy="8" r="2.5" fill="white" opacity="0.6"/><circle cx="50" cy="92" r="2.5" fill="white" opacity="0.6"/><circle cx="8" cy="50" r="2.5" fill="white" opacity="0.6"/><circle cx="92" cy="50" r="2.5" fill="white" opacity="0.6"/></svg>
         <div style="position:absolute;left:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;opacity:0.25;"><div style="width:62px;height:6px;background:white;border-radius:3px;"></div><div style="width:82px;height:6px;background:white;border-radius:3px;"></div><div style="width:48px;height:6px;background:white;border-radius:3px;"></div><div style="width:70px;height:6px;background:white;border-radius:3px;"></div></div>
@@ -2365,7 +2365,7 @@ tbody tr:hover td { background: var(--n50); }
 <div class="page" id="page-learning">
 
   <!-- ACADEMY HERO -->
-  <div style="background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#4629FF 100%); border-radius:var(--r16); padding:44px 52px; margin-bottom:36px; position:relative; overflow:hidden;">
+  <div style="background:linear-gradient(135deg,#0f0735 0%,#2d1680 55%,#D11920 100%); border-radius:var(--r16); padding:44px 52px; margin-bottom:36px; position:relative; overflow:hidden;">
     <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.08" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="lrn-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M 24 0 L 0 0 0 24" fill="none" stroke="white" stroke-width="0.6"/></pattern></defs><rect width="100%" height="100%" fill="url(#lrn-grid)"/></svg>
     <svg style="position:absolute;right:-50px;bottom:-50px;width:300px;height:300px;opacity:0.06" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="45" fill="none" stroke="white" stroke-width="1.5"/><circle cx="50" cy="50" r="32" fill="none" stroke="white" stroke-width="1"/><circle cx="50" cy="50" r="18" fill="none" stroke="white" stroke-width="0.8"/></svg>
     <div style="position:relative; display:flex; align-items:center; justify-content:space-between; gap:40px;">
@@ -2409,10 +2409,10 @@ tbody tr:hover td { background: var(--n50); }
 
   <!-- FEATURED ARTICLE -->
   <div class="page-section">
-    <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r16); overflow:hidden; cursor:pointer; display:flex; align-items:stretch; box-shadow:0 2px 8px rgba(0,0,0,0.05); transition:box-shadow 0.18s,border-color 0.18s,transform 0.18s;" onmouseover="this.style.boxShadow='0 8px 32px rgba(70,41,255,0.10)';this.style.borderColor='var(--primary-200)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.05)';this.style.borderColor='var(--n200)';this.style.transform='none'">
+    <div style="background:var(--n0); border:1px solid var(--n200); border-radius:var(--r16); overflow:hidden; cursor:pointer; display:flex; align-items:stretch; box-shadow:0 2px 8px rgba(0,0,0,0.05); transition:box-shadow 0.18s,border-color 0.18s,transform 0.18s;" onmouseover="this.style.boxShadow='0 8px 32px rgba(209,25,32,0.08)';this.style.borderColor='var(--primary-200)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.05)';this.style.borderColor='var(--n200)';this.style.transform='none'">
       <div style="width:4px;background:var(--primary);flex-shrink:0;"></div>
       <div style="padding:36px 44px; flex:1; display:flex; flex-direction:column; justify-content:center;">
-        <div style="display:inline-flex; align-items:center; gap:7px; background:var(--primary-50); border:1px solid rgba(70,41,255,0.12); border-radius:var(--r999); padding:4px 12px; width:fit-content; margin-bottom:18px;">
+        <div style="display:inline-flex; align-items:center; gap:7px; background:var(--primary-50); border:1px solid rgba(209,25,32,0.10); border-radius:var(--r999); padding:4px 12px; width:fit-content; margin-bottom:18px;">
           <span style="font-size:10.5px;font-weight:800;color:var(--primary);letter-spacing:0.5px;">✦ FEATURED · AI WORKFLOWS</span>
         </div>
         <div style="font-size:23px; font-weight:800; color:#0D0D1A; line-height:1.25; margin-bottom:12px; letter-spacing:-0.5px;">Using Claude for UX Research Synthesis</div>
@@ -2445,13 +2445,10 @@ tbody tr:hover td { background: var(--n50); }
   <!-- Getting Started -->
   <div class="page-section">
     <div class="section-head">
-      <div style="display:flex; align-items:center; gap:12px;">
-        <div style="width:10px;height:10px;border-radius:50%;background:#10b981;flex-shrink:0;box-shadow:0 0 0 3px rgba(16,185,129,0.18);"></div>
-        <div>
-          <div class="section-label">Getting started</div>
+      <div>
+          <h2 class="section-label" style="font-size:28px;margin:0;">Getting started</h2>
           <div class="section-desc">Everything you need in your first two weeks</div>
         </div>
-      </div>
       <span class="section-link">See all →</span>
     </div>
     <div class="grid-2">
@@ -2508,13 +2505,10 @@ tbody tr:hover td { background: var(--n50); }
   <!-- Tool Setup -->
   <div class="page-section">
     <div class="section-head">
-      <div style="display:flex; align-items:center; gap:12px;">
-        <div style="width:10px;height:10px;border-radius:50%;background:#f59e0b;flex-shrink:0;box-shadow:0 0 0 3px rgba(245,158,11,0.18);"></div>
-        <div>
-          <div class="section-label">Tool setup</div>
+      <div>
+          <h2 class="section-label" style="font-size:28px;margin:0;">Tool setup</h2>
           <div class="section-desc">Get your workspace configured correctly from day one</div>
         </div>
-      </div>
     </div>
     <div class="grid-3">
 
@@ -2590,13 +2584,10 @@ tbody tr:hover td { background: var(--n50); }
   <!-- AI Workflows -->
   <div class="page-section">
     <div class="section-head">
-      <div style="display:flex; align-items:center; gap:12px;">
-        <div style="width:10px;height:10px;border-radius:50%;background:var(--primary);flex-shrink:0;box-shadow:0 0 0 3px rgba(70,41,255,0.15);"></div>
-        <div>
-          <div class="section-label">AI workflows</div>
+      <div>
+          <h2 class="section-label" style="font-size:28px;margin:0;">AI workflows</h2>
           <div class="section-desc">Practical guides for integrating AI into your day-to-day design work</div>
         </div>
-      </div>
       <span class="section-link">See all →</span>
     </div>
     <div class="grid-3">
@@ -2674,13 +2665,10 @@ tbody tr:hover td { background: var(--n50); }
   <!-- Playbooks -->
   <div class="page-section">
     <div class="section-head">
-      <div style="display:flex; align-items:center; gap:12px;">
-        <div style="width:10px;height:10px;border-radius:50%;background:#f97316;flex-shrink:0;box-shadow:0 0 0 3px rgba(249,115,22,0.18);"></div>
-        <div>
-          <div class="section-label">Playbooks</div>
+      <div>
+          <h2 class="section-label" style="font-size:28px;margin:0;">Playbooks</h2>
           <div class="section-desc">Comprehensive, step-by-step guides for recurring design challenges</div>
         </div>
-      </div>
     </div>
     <div class="grid-3">
 
@@ -2772,7 +2760,7 @@ tbody tr:hover td { background: var(--n50); }
       <div class="stack-sm">
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;">✅</div>
+          <div class="list-icon" style="background:#FFF1F1;">✅</div>
           <div class="list-content">
             <div class="list-title">Design Checklist</div>
             <div class="list-sub">A checklist to go through before sharing any design work with your team.</div>
@@ -2783,7 +2771,7 @@ tbody tr:hover td { background: var(--n50); }
         </div>
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;">🔎</div>
+          <div class="list-icon" style="background:#FFF1F1;">🔎</div>
           <div class="list-content">
             <div class="list-title">Design QA Checklist</div>
             <div class="list-sub">A checklist to use when doing a QA on designs with your dev team in staging.</div>
@@ -2794,7 +2782,7 @@ tbody tr:hover td { background: var(--n50); }
         </div>
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;">📋</div>
+          <div class="list-icon" style="background:#FFF1F1;">📋</div>
           <div class="list-content">
             <div class="list-title">Design QA Playbook</div>
             <div class="list-sub">A guide outlining how QA works and how to engage with engineers during the QA process.</div>
@@ -2808,7 +2796,7 @@ tbody tr:hover td { background: var(--n50); }
       <div class="stack-sm">
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;">✍️</div>
+          <div class="list-icon" style="background:#FFF1F1;">✍️</div>
           <div class="list-content">
             <div class="list-title">Tone of Voice Guidelines</div>
             <div class="list-sub">Guidelines on how to write content for vendor-facing products — clear, human, and consistent.</div>
@@ -2819,7 +2807,7 @@ tbody tr:hover td { background: var(--n50); }
         </div>
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;">📊</div>
+          <div class="list-icon" style="background:#FFF1F1;">📊</div>
           <div class="list-content">
             <div class="list-title">Data Viz Guidelines</div>
             <div class="list-sub">Best practices and standards for presenting data visualisations in vendor-facing products.</div>
@@ -2900,7 +2888,7 @@ tbody tr:hover td { background: var(--n50); }
 <div class="page" id="page-research">
 
   <!-- Callout -->
-  <div class="callout" style="background:#E8E4FF;border-color:#C9C0FF;margin-bottom:28px;">
+  <div class="callout" style="background:#FFD6D7;border-color:#FFD6D7;margin-bottom:28px;">
     <div class="callout-icon" style="font-size: 17.5px;">📅</div>
     <div class="callout-body" style="font-size: 15.5px;">
       Want to run a vendor research? Check our <strong>research calendar</strong> first to avoid overlap — and reach out to <strong style="color:var(--primary);">#Devi</strong> on Slack if you'd like help getting started or have any questions.
@@ -2919,7 +2907,7 @@ tbody tr:hover td { background: var(--n50); }
       <div class="stack-sm">
 
         <div class="list-item">
-          <div class="list-icon" style="background:#E8E4FF;">🔍</div>
+          <div class="list-icon" style="background:#FFD6D7;">🔍</div>
           <div class="list-content">
             <div class="list-title">UX Research process</div>
             <div class="list-sub">Step-by-step guide on how to plan and conduct user research for vendor-facing products.</div>
@@ -2930,7 +2918,7 @@ tbody tr:hover td { background: var(--n50); }
         </div>
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;">📍</div>
+          <div class="list-icon" style="background:#FFF1F1;">📍</div>
           <div class="list-content">
             <div class="list-title">Berlin monthly vendor visit</div>
             <div class="list-sub">Monthly in-person vendor visits in Berlin — how to join, what to expect, and how to document insights.</div>
@@ -2970,7 +2958,7 @@ tbody tr:hover td { background: var(--n50); }
       <div class="stack-sm">
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;">📊</div>
+          <div class="list-icon" style="background:#FFF1F1;">📊</div>
           <div class="list-content">
             <div class="list-title">UXS existing partners</div>
             <div class="list-sub">UX study covering the experience of existing vendor partners — pain points, workflows, and satisfaction drivers.</div>
@@ -2981,7 +2969,7 @@ tbody tr:hover td { background: var(--n50); }
         </div>
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;">👥</div>
+          <div class="list-icon" style="background:#FFF1F1;">👥</div>
           <div class="list-content">
             <div class="list-title">Partner User Personas</div>
             <div class="list-sub">Research-backed personas representing our key vendor user types across markets and business sizes.</div>
@@ -2995,7 +2983,7 @@ tbody tr:hover td { background: var(--n50); }
       <div class="stack-sm">
 
         <div class="list-item">
-          <div class="list-icon" style="background:#E8E4FF;">💡</div>
+          <div class="list-icon" style="background:#FFD6D7;">💡</div>
           <div class="list-content">
             <div class="list-title">More UX Research outcomes</div>
             <div class="list-sub">A repository of additional research findings, synthesis documents, and outcome reports from past studies.</div>
@@ -3034,7 +3022,7 @@ tbody tr:hover td { background: var(--n50); }
       <div class="stack-sm">
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;font-size:15.5px;">✨</div>
+          <div class="list-icon" style="background:#FFF1F1;font-size:15.5px;">✨</div>
           <div class="list-content">
             <div class="list-title">Delightful Experience</div>
             <div class="list-sub">Elevate and refine the Partner Portal experience across every touchpoint.</div>
@@ -3046,7 +3034,7 @@ tbody tr:hover td { background: var(--n50); }
         </div>
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;font-size:15.5px;">🔄</div>
+          <div class="list-icon" style="background:#FFF1F1;font-size:15.5px;">🔄</div>
           <div class="list-content">
             <div class="list-title">Seamless UX</div>
             <div class="list-sub">Identify overlaps in projects and opportunities for cross-team collaboration.</div>
@@ -3058,7 +3046,7 @@ tbody tr:hover td { background: var(--n50); }
         </div>
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;font-size:15.5px;">📁</div>
+          <div class="list-icon" style="background:#FFF1F1;font-size:15.5px;">📁</div>
           <div class="list-content">
             <div class="list-title">Figma Space Organisation</div>
             <div class="list-sub">Clean up and organise our team Figma space for designers and viewers alike.</div>
@@ -3070,7 +3058,7 @@ tbody tr:hover td { background: var(--n50); }
         </div>
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;font-size:15.5px;">✅</div>
+          <div class="list-icon" style="background:#FFF1F1;font-size:15.5px;">✅</div>
           <div class="list-content">
             <div class="list-title">Partner Cape migration</div>
             <div class="list-sub">Converting all Partner Portal designs from Chamigo to the Cape design system.</div>
@@ -3085,7 +3073,7 @@ tbody tr:hover td { background: var(--n50); }
       <div class="stack-sm">
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;font-size:15.5px;">📖</div>
+          <div class="list-icon" style="background:#FFF1F1;font-size:15.5px;">📖</div>
           <div class="list-content">
             <div class="list-title">Design Bites</div>
             <div class="list-sub">Short, insightful design articles shared weekly in our Slack channel.</div>
@@ -3096,7 +3084,7 @@ tbody tr:hover td { background: var(--n50); }
         </div>
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;font-size:15.5px;">☕</div>
+          <div class="list-icon" style="background:#FFF1F1;font-size:15.5px;">☕</div>
           <div class="list-content">
             <div class="list-title">Design Breakfast</div>
             <div class="list-sub">Monthly session with internal and external speakers on key design topics.</div>
@@ -3107,7 +3095,7 @@ tbody tr:hover td { background: var(--n50); }
         </div>
 
         <div class="list-item">
-          <div class="list-icon" style="background:#EEEAFF;font-size:15.5px;">🏆</div>
+          <div class="list-icon" style="background:#FFF1F1;font-size:15.5px;">🏆</div>
           <div class="list-content">
             <div class="list-title">UX Hero</div>
             <div class="list-sub">Celebrating great UX decisions and championing craft quality across the team.</div>
